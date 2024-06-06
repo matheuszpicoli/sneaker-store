@@ -37,6 +37,7 @@ export default function Header(): React.JSX.Element {
 					id="search-input"
 					type="search"
 					name="search-input"
+					placeholder="Pesquisar"
 				/>
 			</div>
 		</nav>

@@ -10,8 +10,47 @@ $yellow: #ffff32;
 	width: 2em;
 }
 
-@mixin sticky($value) {
-	position: -webkit-sticky;
+@mixin sticky($stickyValue) {
 	position: sticky;
-	top: $value;
+	position: -webkit-sticky;
+	top: $stickyValue;
+}
+
+@mixin transform($transformProperty) {
+	transform: $transformProperty;
+	-o-transform: $transformProperty;
+	-ms-transform: $transformProperty;
+	-webkit-transform: $transformProperty;
+	-moz-transform: $transformProperty;
+}
+
+@mixin animation($animationProperties...) {
+	animation: $animationProperties;
+	-moz-animation: $animationProperties;
+	-ms-animation: $animationProperties;
+	-o-animation: $animationProperties;
+	-webkit-animation: $animationProperties;
+}
+
+@mixin keyframes($animationName) {
+	@keyframes #{$animationName} {
+		@content;
+	}
+
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+
+	@-ms-keyframes #{$animationName} {
+		@content;
+	}
+
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+
 }
