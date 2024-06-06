@@ -1,0 +1,19 @@
+$fonts: (
+	"RethinkSans Bold Italic",
+	"RethinkSans Bold",
+	"RethinkSans Extra Bold Italic",
+	"RethinkSans Extra Bold",
+	"RethinkSans Italic",
+	"RethinkSans Medium Italic",
+	"RethinkSans Medium",
+	"RethinkSans Regular",
+	"RethinkSans Semi Bold Italic",
+	"RethinkSans SemiBold"
+);
+
+@each $font in $fonts {
+	@font-face {
+		font-family: "#{$font}";
+		src: url("../fonts/#{$font}.ttf") format("truetype");
+	}
+}
