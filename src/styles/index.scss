@@ -1,5 +1,24 @@
+//. Fonts
 @import "./fonts.scss";
 
+//. Variables, mixins, functions and others things
+@import "./variablesMixinsAndOthers.scss";
+
+//. Style files
+@import "./tagLayout.scss";
+
+//. Components
+@import "./components-style/Header.scss";
+
+//. Global
 * {
 	font-family: "RethinkSans Regular", sans-serif;
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+}
+
+*::selection {
+	background-color: #560056;
+	color: $white;
 }

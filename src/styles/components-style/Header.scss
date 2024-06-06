@@ -1,0 +1,93 @@
+.navbar {
+	align-items: center;
+	background-color: $yellow;
+	border-bottom: 2px solid $fullBlack;
+	cursor: default;
+	display: flex;
+	flex-direction: row;
+	height: 3em;
+	justify-content: space-between;
+	width: 100vw;
+
+	.logo-area {
+		cursor: pointer;
+		display: inherit;
+
+		.logo-icon {
+			@include iconSize;
+			display: inline;
+			margin: $spacing;
+			vertical-align: middle;
+		}
+
+		.logo-title {
+			letter-spacing: -1px;
+
+			.emphasis-title-font {
+				font-family: "RethinkSans Extra Bold", sans-serif;
+			}
+		}
+	}
+
+	.link-area {
+		display: inherit;
+
+		.link-nav {
+			color: $fullBlack;
+			margin: $spacing;
+			text-decoration: none;
+			transition-duration: 300ms;
+
+			&:hover {
+				opacity: .3;
+			}
+
+			&:active {
+				opacity: 1;
+			}
+		}
+	}
+
+	.search-area {
+		display: inherit;
+		margin: $spacing;
+
+		.search-label {
+			margin: 0;
+			padding: 0;
+		}
+
+		#search-input {
+			background-color: $white;
+			border-radius: 0.15em;
+			border: .5px solid $fullBlack;
+			outline: none;
+			padding: 5px;
+			transition-duration: 300ms;
+
+			&:hover {
+				background-color: #ffffff;
+			}
+
+			&:active {
+				opacity: .9;
+			}
+		}
+
+		.search-icon {
+			@include iconSize;
+			cursor: pointer;
+			display: inline;
+			transition-duration: 300ms;
+			vertical-align: middle;
+
+			&:hover {
+				opacity: .3;
+			}
+
+			&:active {
+				opacity: 1;
+			}
+		}
+	}
+}

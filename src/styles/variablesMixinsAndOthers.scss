@@ -1,0 +1,17 @@
+//- Variables
+$fullBlack: #000000;
+$spacing: 0 1em;
+$white: #f6f6f6;
+$yellow: #ffff32;
+
+//- Mixins
+@mixin iconSize {
+	height: 2em;
+	width: 2em;
+}
+
+@mixin sticky($value) {
+	position: -webkit-sticky;
+	position: sticky;
+	top: $value;
+}
