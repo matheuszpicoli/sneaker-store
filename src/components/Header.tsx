@@ -26,7 +26,7 @@ export default function Header(): React.JSX.Element {
 			<div className="link-area">
 				<Link href="#" className="link-nav">Masculino</Link>
 				<Link href="#" className="link-nav">Feminino</Link>
-				<Link href="#" className="link-nav">Kids</Link>
+				<Link href="#" className="link-nav">Teens</Link>
 				<Link href="#" className="link-nav">Coleções</Link>
 			</div>
 			<div className="search-area">

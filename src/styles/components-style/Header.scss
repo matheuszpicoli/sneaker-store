@@ -44,14 +44,6 @@
 					animation-delay: #{150ms * $linkNavIndex};
 				}
 			}
-
-			&:hover {
-				opacity: .3;
-			}
-
-			&:active {
-				opacity: 1;
-			}
 		}
 	}
 
