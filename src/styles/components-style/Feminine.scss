@@ -1,0 +1,6 @@
+.feminine {
+	@include sectionSpace;
+	background-color: $feminineColor;
+	width: 100vw;
+	height: 100vh;
+}

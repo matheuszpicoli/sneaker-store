@@ -5,6 +5,9 @@ import React from "react"
 import type { Metadata } from "next"
 import Head from "next/head"
 
+//- Components
+import Header from "@/components/Header"
+
 export const metadata: Metadata = {
 	authors: {
 		name: "Matheus Zanela Picoli",
@@ -26,7 +29,12 @@ export function RootLayout<T extends RootLayoutProps>(props: Readonly<T>): React
 				<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 			</Head>
 			<body>
-				{props.children}
+				<header>
+					<Header />
+				</header>
+				<main>
+					{props.children}
+				</main>
 			</body>
 		</html>
 	)

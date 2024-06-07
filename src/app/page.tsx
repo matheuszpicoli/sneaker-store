@@ -5,18 +5,20 @@ import React from "react"
 import "../styles/index.scss"
 
 //- Components
-import Header from "@/components/Header"
 import SneakerHighlight from "@/components/SneakerHighlight"
+import Masculine from "@/components/Masculine"
+import Feminine from "@/components/Feminine"
+import Teen from "@/components/Teen"
+import Collections from "@/components/Collections"
 
 export default function MPSneakers(): React.JSX.Element {
 	return (
 		<React.Fragment>
-			<header>
-				<Header />
-			</header>
-			<main>
-				<SneakerHighlight />
-			</main>
+			<SneakerHighlight />
+			<Masculine />
+			<Feminine />
+			<Teen />
+			<Collections />
 		</React.Fragment>
 	)
 }

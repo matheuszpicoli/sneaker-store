@@ -24,10 +24,10 @@ export default function Header(): React.JSX.Element {
 				</h1>
 			</div>
 			<div className="link-area">
-				<Link href="#" className="link-nav">Masculino</Link>
-				<Link href="#" className="link-nav">Feminino</Link>
-				<Link href="#" className="link-nav">Teens</Link>
-				<Link href="#" className="link-nav">Coleções</Link>
+				<Link href="#masculine" className="link-nav">Masculino</Link>
+				<Link href="#feminine" className="link-nav">Feminino</Link>
+				<Link href="#teens" className="link-nav">Teens</Link>
+				<Link href="#collections" className="link-nav">Coleções</Link>
 			</div>
 			<div className="search-area">
 				<label className="search-label" htmlFor="search-input">
