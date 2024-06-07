@@ -21,9 +21,11 @@ function isDateInRange(
 	endMonth: number,
 	endDay: number
 ): boolean {
-	const startDate = new Date(new Date().getFullYear(), startMonth - 1, startDay)
-	const endDate = new Date(new Date().getFullYear(), endMonth - 1, endDay)
-	const currentDate = new Date(new Date().getFullYear(), month - 1, day)
+	const currentYear = new Date().getFullYear()
+
+	const startDate = new Date(currentYear, startMonth - 1, startDay)
+	const currentDate = new Date(currentYear, month - 1, day)
+	const endDate = new Date(currentYear, endMonth - 1, endDay)
 
 	return currentDate >= startDate && currentDate < endDate
 }
@@ -50,6 +52,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 		<React.Fragment>
 			{props.reference === "masculine" && (
 				<section id="masculine" className="masculine">
+					<h3 className="section-title">Masculino</h3>
 					<div className="masculine-sneakers">
 						{masculineSneakers.map((sneaker: StaticImageData, index: number) => (
 							<Image
@@ -66,6 +69,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			)}
 			{props.reference === "feminine" && (
 				<section id="feminine" className="feminine">
+					<h3 className="section-title">Feminino</h3>
 					<div className="feminine-sneakers">
 						{feminineSneakers.map((sneaker: StaticImageData, index: number) => (
 							<Image
@@ -82,6 +86,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			)}
 			{props.reference === "teens" && (
 				<section id="teens" className="teens">
+					<h3 className="section-title">Teens</h3>
 					<div className="teens-sneakers">
 						{teensSneakers.map((sneaker: StaticImageData, index: number) => (
 							<Image
@@ -99,60 +104,72 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			{props.reference === "collections" && (
 				<section id="collections" className="collections">
 					{getSeason() === "summer" && (
-						<div className="collection-sneakers">
-							{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
-								<Image
-									key={index}
-									className="collection-sneaker-photo"
-									src={sneaker}
-									alt={`Tênis verão ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-							))}
-						</div>
+						<React.Fragment>
+							<h3 className="section-title">Coleções de Verão</h3>
+							<div className="collection-sneakers">
+								{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
+									<Image
+										key={index}
+										className="collection-sneaker-photo"
+										src={sneaker}
+										alt={`Tênis verão ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+								))}
+							</div>
+						</React.Fragment>
 					)}
 					{getSeason() === "autumn" && (
-						<div className="collection-sneakers">
-							{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
-								<Image
-									key={index}
-									className="collection-sneaker-photo"
-									src={sneaker}
-									alt={`Tênis outono ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-							))}
-						</div>
+						<React.Fragment>
+							<h3 className="section-title">Coleções de Outono</h3>
+							<div className="collection-sneakers">
+								{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
+									<Image
+										key={index}
+										className="collection-sneaker-photo"
+										src={sneaker}
+										alt={`Tênis outono ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+								))}
+							</div>
+						</React.Fragment>
 					)}
 					{getSeason() === "winter" && (
-						<div className="collection-sneakers">
-							{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
-								<Image
-									key={index}
-									className="collection-sneaker-photo"
-									src={sneaker}
-									alt={`Tênis inverno ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-							))}
-						</div>
+						<React.Fragment>
+							<h3 className="section-title">Coleções de Inverno</h3>
+							<div className="collection-sneakers">
+								{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
+									<Image
+										key={index}
+										className="collection-sneaker-photo"
+										src={sneaker}
+										alt={`Tênis inverno ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+								))}
+							</div>
+						</React.Fragment>
 					)}
 					{getSeason() === "spring" && (
-						<div className="collection-sneakers">
-							{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
-								<Image
-									key={index}
-									className="collection-sneaker-photo"
-									src={sneaker}
-									alt={`Tênis primavera ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-							))}
-						</div>
+						<React.Fragment>
+							<h3 className="section-title">Coleções de Primavera</h3>
+							<div className="collection-sneakers">
+								{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
+									<Image
+										key={index}
+										className="collection-sneaker-photo"
+										src={sneaker}
+										alt={`Tênis primavera ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+								))}
+							</div>
+						</React.Fragment>
 					)}
 				</section>
 			)}

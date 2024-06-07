@@ -1,14 +1,22 @@
 :is(.masculine, .feminine, .teens, .collections) {
-	min-height: 100vh;
-	padding: $headerHeight 0;
-	min-width: 100vw;
+	color: $white;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	font-size: 4em;
+	min-height: 100vh;
+	min-width: 100vw;
+	padding: calc($headerHeight / 4) 0;
+
+	.section-title {
+		cursor: default;
+		font-family: "RethinkSans Extra Bold", sans-serif;
+		margin: 0 15px;
+	}
 
 	:where(.masculine-sneakers, .feminine-sneakers, .teens-sneakers, .collection-sneakers) {
 		display: flex;
 		justify-content: space-around;
-		margin-top: calc($headerHeight * 3);
+		flex-direction: row;
 		width: 100%;
 
 		:where(.masculine-sneaker-photo, .feminine-sneaker-photo, .teens-sneaker-photo, .collection-sneaker-photo) {
@@ -16,6 +24,7 @@
 			border-radius: 50%;
 			border: 5px solid $white;
 			height: 250px;
+			margin-top: 1em;
 			pointer-events: none;
 			width: 250px;
 		}
@@ -23,17 +32,17 @@
 }
 
 .masculine {
-	@include sectionContent($masculineColor, "Masculino");
+	background-color: $masculineColor;
 }
 
 .feminine {
-	@include sectionContent($feminineColor, "Feminino");
+	background-color: $feminineColor;
 }
 
 .teens {
-	@include sectionContent($teensColor, "Teens");
+	background-color: $teensColor;
 }
 
 .collections {
-	@include sectionContent($collectionsColor, "Coleções");
+	background-color: $collectionsColor;
 }
