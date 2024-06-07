@@ -1,0 +1,16 @@
+.highlight-subtitle {
+	text-align: center;
+}
+
+.sneaker-highlight {
+	display: flex;
+	flex-direction: row;
+	overflow-x: scroll;
+	width: 100vw;
+
+	.highlight-photo {
+		height: 500px;
+		margin: .5em;
+		width: 500px;
+	}
+}
