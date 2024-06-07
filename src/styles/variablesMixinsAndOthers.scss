@@ -15,6 +15,19 @@ $headerHeight: 3em;
 	width: 2em;
 }
 
+@mixin sectionContent($color, $content) {
+	background-color: $color;
+
+	&::before {
+		content: $content;
+		color: $white;
+		font-family: "RethinkSans Extra Bold", sans-serif;
+		font-size: 4em;
+		padding: 0 15px;
+		position: relative;
+	}
+}
+
 @mixin sticky($stickyValue) {
 	position: sticky;
 	position: -webkit-sticky;

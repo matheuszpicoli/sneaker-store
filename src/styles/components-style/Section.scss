@@ -1,0 +1,21 @@
+:is(.masculine, .feminine, .teens, .collections) {
+	width: 100vw;
+	height: 100vh;
+	padding-top: $headerHeight;
+}
+
+.masculine {
+	@include sectionContent($masculineColor, "Masculino");
+}
+
+.feminine {
+	@include sectionContent($feminineColor, "Feminino");
+}
+
+.teens {
+	@include sectionContent($teensColor, "Teens");
+}
+
+.collections {
+	@include sectionContent($collectionsColor, "Coleções");
+}
