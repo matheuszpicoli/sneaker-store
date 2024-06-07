@@ -1,29 +1,51 @@
+"use client"
+
 //- React
 import React from "react"
 
 //- Next
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 
 //- Images
-import * as Photo from "../images/images"
+import { highlightSneakers } from "../images/images"
 
-type PhotoKey = keyof typeof Photo
+//- Swiper
+import "swiper/css"
+import "swiper/css/pagination"
+import { register } from "swiper/element/bundle"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { EffectCoverflow } from "swiper/modules"
+
+register()
 
 export default function SneakerHighlight(): React.JSX.Element {
-	const photoHighlights: PhotoKey[] = ["highlight1", "highlight2", "highlight3", "highlight4"]
-
 	return (
 		<React.Fragment>
+			<h2 className="highlight-subtitle">Diversas opções para você escolher</h2>
 			<aside className="sneaker-highlight">
-				{photoHighlights.map((name, index) => (
-					<Image
-						key={index}
-						className="highlight-photo"
-						src={Photo[name]}
-						alt={`Destaque ${index + 1}`}
-						priority={true}
-					/>
-				))}
+				<Swiper
+					modules={[
+						EffectCoverflow
+					]}
+					effect="coverflow"
+					slidesPerView={3}
+					pagination={{
+						clickable: true
+					}}
+					autoplay={true}
+					navigation
+				>
+					{highlightSneakers.map((sneaker: StaticImageData, index: number) => (
+						<SwiperSlide key={index}>
+							<Image
+								className="highlight-photo"
+								src={sneaker}
+								alt={`Destaque ${index + 1}`}
+								priority={true}
+							/>
+						</SwiperSlide>
+					))}
+				</Swiper>
 			</aside>
 		</React.Fragment>
 	)

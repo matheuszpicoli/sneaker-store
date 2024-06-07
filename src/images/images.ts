@@ -1,3 +1,6 @@
+//- Next
+import { StaticImageData } from "next/image"
+
 //? Collections
 import autumnSneaker1 from "./collections/autumn/autumnSneaker1.jpg"
 import autumnSneaker2 from "./collections/autumn/autumnSneaker2.jpg"
@@ -42,21 +45,31 @@ import highlight1 from "./sneaker highlight/highlight1.jpg"
 import highlight2 from "./sneaker highlight/highlight2.jpg"
 import highlight3 from "./sneaker highlight/highlight3.jpg"
 import highlight4 from "./sneaker highlight/highlight4.jpg"
+import highlight5 from "./sneaker highlight/highlight5.jpg"
+import highlight6 from "./sneaker highlight/highlight6.jpg"
+import highlight7 from "./sneaker highlight/highlight7.jpg"
+import highlight8 from "./sneaker highlight/highlight8.jpg"
 
-//. Collection export
-export { autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4 }
-export { springSneaker1, springSneaker2, springSneaker3, springSneaker4 }
-export { summerSneaker1, summerSneaker2, summerSneaker3, summerSneaker4 }
-export { winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4 }
+export const collection: { [season: string]: StaticImageData[] } = {
+	autumn: [autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4],
+	spring: [springSneaker1, springSneaker2, springSneaker3, springSneaker4],
+	summer: [summerSneaker1, summerSneaker2, summerSneaker3, summerSneaker4],
+	winter: [winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4]
+}
 
-//. Femme export
-export { femmeSneaker1, femmeSneaker2, femmeSneaker3, femmeSneaker4 }
+export const femmeSneakers: StaticImageData[] = [
+	femmeSneaker1, femmeSneaker2, femmeSneaker3, femmeSneaker4
+]
 
-//. Male export
-export { maleSneaker1, maleSneaker2, maleSneaker3, maleSneaker4 }
+export const maleSneakers: StaticImageData[] = [
+	maleSneaker1, maleSneaker2, maleSneaker3, maleSneaker4
+]
 
-//. Teen export
-export { teenSneaker1, teenSneaker2, teenSneaker3, teenSneaker4 }
+export const teenSneakers: StaticImageData[] = [
+	teenSneaker1, teenSneaker2, teenSneaker3, teenSneaker4
+]
 
-//. Highlight export
-export { highlight1, highlight2, highlight3, highlight4 }
+export const highlightSneakers: StaticImageData[] = [
+	highlight1, highlight2, highlight3, highlight4,
+	highlight5, highlight6, highlight7, highlight8
+]
