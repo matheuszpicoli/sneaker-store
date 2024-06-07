@@ -50,22 +50,22 @@ import highlight6 from "./sneaker highlight/highlight6.jpg"
 import highlight7 from "./sneaker highlight/highlight7.jpg"
 import highlight8 from "./sneaker highlight/highlight8.jpg"
 
-export const collection: { [season: string]: StaticImageData[] } = {
+export const collectionSneakers: { [season: string]: StaticImageData[] } = {
 	autumn: [autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4],
 	spring: [springSneaker1, springSneaker2, springSneaker3, springSneaker4],
 	summer: [summerSneaker1, summerSneaker2, summerSneaker3, summerSneaker4],
 	winter: [winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4]
 }
 
-export const femmeSneakers: StaticImageData[] = [
+export const feminineSneakers: StaticImageData[] = [
 	femmeSneaker1, femmeSneaker2, femmeSneaker3, femmeSneaker4
 ]
 
-export const maleSneakers: StaticImageData[] = [
+export const masculineSneakers: StaticImageData[] = [
 	maleSneaker1, maleSneaker2, maleSneaker3, maleSneaker4
 ]
 
-export const teenSneakers: StaticImageData[] = [
+export const teensSneakers: StaticImageData[] = [
 	teenSneaker1, teenSneaker2, teenSneaker3, teenSneaker4
 ]
 

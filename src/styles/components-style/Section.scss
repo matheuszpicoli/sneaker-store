@@ -1,7 +1,25 @@
 :is(.masculine, .feminine, .teens, .collections) {
-	width: 100vw;
-	height: 100vh;
-	padding-top: $headerHeight;
+	min-height: 100vh;
+	padding: $headerHeight 0;
+	min-width: 100vw;
+	display: flex;
+	flex-direction: row;
+
+	:where(.masculine-sneakers, .feminine-sneakers, .teens-sneakers) {
+		display: flex;
+		justify-content: space-around;
+		margin-top: calc($headerHeight * 3);
+		width: 100%;
+
+		:where(.masculine-sneaker-photo, .feminine-sneaker-photo, .teens-sneaker-photo) {
+			@include filter(drop-shadow(4px 4px 4px #00000080));
+			border-radius: 50%;
+			border: 5px solid $white;
+			height: 250px;
+			pointer-events: none;
+			width: 250px;
+		}
+	}
 }
 
 .masculine {

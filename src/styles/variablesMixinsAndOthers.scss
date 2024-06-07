@@ -17,14 +17,17 @@ $headerHeight: 3em;
 
 @mixin sectionContent($color, $content) {
 	background-color: $color;
+	position: relative;
 
 	&::before {
 		content: $content;
 		color: $white;
 		font-family: "RethinkSans Extra Bold", sans-serif;
 		font-size: 4em;
+		left: 0;
 		padding: 0 15px;
-		position: relative;
+		position: absolute;
+		top: 1em;
 	}
 }
 
@@ -40,6 +43,12 @@ $headerHeight: 3em;
 	-ms-transform: $transformProperty;
 	-webkit-transform: $transformProperty;
 	-moz-transform: $transformProperty;
+}
+
+@mixin filter($filterProperties...) {
+	filter: $filterProperties;
+	-ms-filter: $filterProperties;
+	-webkit-filter: $filterProperties;
 }
 
 @mixin animation($animationProperties...) {
