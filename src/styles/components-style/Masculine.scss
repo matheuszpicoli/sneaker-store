@@ -1,6 +1,15 @@
 .masculine {
-	@include sectionSpace;
 	background-color: $masculineColor;
 	width: 100vw;
 	height: 100vh;
+	padding-top: $headerHeight;
+
+	&::before {
+		content: "Masculino";
+		color: $white;
+		font-family: "RethinkSans Extra Bold", sans-serif;
+		font-size: 4em;
+		padding: 0 15px;
+		position: relative;
+	}
 }

@@ -1,6 +1,15 @@
 .teens {
-	@include sectionSpace;
 	background-color: $teensColor;
 	width: 100vw;
 	height: 100vh;
+	padding-top: $headerHeight;
+
+	&::before {
+		content: "Teens";
+		color: $white;
+		font-family: "RethinkSans Extra Bold", sans-serif;
+		font-size: 4em;
+		padding: 0 15px;
+		position: relative;
+	}
 }

@@ -21,9 +21,9 @@
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
-}
 
-*::selection {
-	background-color: #560056;
-	color: $white;
+	&::selection {
+		background-color: #560056;
+		color: $white;
+	}
 }

@@ -7,15 +7,12 @@ $masculineColor: #1642b2;
 $feminineColor: #19a39c;
 $teensColor: #880000;
 $collectionsColor: #008236;
+$headerHeight: 3em;
 
 //- Mixins
 @mixin iconSize {
 	height: 2em;
 	width: 2em;
-}
-
-@mixin sectionSpace {
-	margin: 2em 0;
 }
 
 @mixin sticky($stickyValue) {
