@@ -13,13 +13,13 @@
 		margin: 0 15px;
 	}
 
-	:where(.masculine-sneakers, .feminine-sneakers, .teens-sneakers, .collection-sneakers) {
+	.sneakers {
 		display: flex;
 		justify-content: space-around;
 		flex-direction: row;
 		width: 100%;
 
-		:where(.masculine-sneaker-photo, .feminine-sneaker-photo, .teens-sneaker-photo, .collection-sneaker-photo) {
+		.sneaker-photo {
 			@include filter(drop-shadow(4px 4px 4px #00000080));
 			border-radius: 50%;
 			border: 5px solid $white;
@@ -27,6 +27,13 @@
 			margin-top: 1em;
 			pointer-events: none;
 			width: 250px;
+		}
+
+		.sneaker-photo-subtitle {
+			cursor: default;
+			font-family: "RethinkSans Medium Italic", sans-serif;
+			font-size: 1rem;
+			text-align: center;
 		}
 	}
 }

@@ -53,16 +53,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			{props.reference === "masculine" && (
 				<section id="masculine" className="masculine">
 					<h3 className="section-title">Masculino</h3>
-					<div className="masculine-sneakers">
+					<div className="sneakers">
 						{masculineSneakers.map((sneaker: StaticImageData, index: number) => (
-							<Image
-								key={index}
-								className="masculine-sneaker-photo"
-								src={sneaker}
-								alt={`Tênis masculino ${index + 1}`}
-								loading="lazy"
-								priority={false}
-							/>
+							<figure key={index}>
+								<Image
+									className="sneaker-photo"
+									src={sneaker}
+									alt={`Tênis masculino ${index + 1}`}
+									loading="lazy"
+									priority={false}
+								/>
+								<figcaption className="sneaker-photo-subtitle">
+									{`Modelo ${index + 1}`}
+								</figcaption>
+							</figure>
 						))}
 					</div>
 				</section>
@@ -70,16 +74,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			{props.reference === "feminine" && (
 				<section id="feminine" className="feminine">
 					<h3 className="section-title">Feminino</h3>
-					<div className="feminine-sneakers">
+					<div className="sneakers">
 						{feminineSneakers.map((sneaker: StaticImageData, index: number) => (
-							<Image
-								key={index}
-								className="feminine-sneaker-photo"
-								src={sneaker}
-								alt={`Tênis feminino ${index + 1}`}
-								loading="lazy"
-								priority={false}
-							/>
+							<figure key={index}>
+								<Image
+									className="sneaker-photo"
+									src={sneaker}
+									alt={`Tênis feminino ${index + 1}`}
+									loading="lazy"
+									priority={false}
+								/>
+								<figcaption className="sneaker-photo-subtitle">
+									{`Modelo ${index + 1}`}
+								</figcaption>
+							</figure>
 						))}
 					</div>
 				</section>
@@ -87,16 +95,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 			{props.reference === "teens" && (
 				<section id="teens" className="teens">
 					<h3 className="section-title">Teens</h3>
-					<div className="teens-sneakers">
+					<div className="sneakers">
 						{teensSneakers.map((sneaker: StaticImageData, index: number) => (
-							<Image
-								key={index}
-								className="teens-sneaker-photo"
-								src={sneaker}
-								alt={`Tênis adolescente ${index + 1}`}
-								loading="lazy"
-								priority={false}
-							/>
+							<figure key={index}>
+								<Image
+									className="sneaker-photo"
+									src={sneaker}
+									alt={`Tênis adolescente ${index + 1}`}
+									loading="lazy"
+									priority={false}
+								/>
+								<figcaption className="sneaker-photo-subtitle">
+									{`Modelo ${index + 1}`}
+								</figcaption>
+							</figure>
 						))}
 					</div>
 				</section>
@@ -106,16 +118,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					{getSeason() === "summer" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Verão</h3>
-							<div className="collection-sneakers">
+							<div className="sneakers">
 								{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
-									<Image
-										key={index}
-										className="collection-sneaker-photo"
-										src={sneaker}
-										alt={`Tênis verão ${index + 1}`}
-										loading="lazy"
-										priority={false}
-									/>
+									<figure key={index}>
+										<Image
+											className="sneaker-photo"
+											src={sneaker}
+											alt={`Tênis verão ${index + 1}`}
+											loading="lazy"
+											priority={false}
+										/>
+										<figcaption className="sneaker-photo-subtitle">
+											{`Modelo ${index + 1}`}
+										</figcaption>
+									</figure>
 								))}
 							</div>
 						</React.Fragment>
@@ -123,16 +139,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					{getSeason() === "autumn" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Outono</h3>
-							<div className="collection-sneakers">
+							<div className="sneakers">
 								{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
-									<Image
-										key={index}
-										className="collection-sneaker-photo"
-										src={sneaker}
-										alt={`Tênis outono ${index + 1}`}
-										loading="lazy"
-										priority={false}
-									/>
+									<figure key={index}>
+										<Image
+											className="sneaker-photo"
+											src={sneaker}
+											alt={`Tênis outono ${index + 1}`}
+											loading="lazy"
+											priority={false}
+										/>
+										<figcaption className="sneaker-photo-subtitle">
+											{`Modelo ${index + 1}`}
+										</figcaption>
+									</figure>
 								))}
 							</div>
 						</React.Fragment>
@@ -140,16 +160,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					{getSeason() === "winter" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Inverno</h3>
-							<div className="collection-sneakers">
+							<div className="sneakers">
 								{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
-									<Image
-										key={index}
-										className="collection-sneaker-photo"
-										src={sneaker}
-										alt={`Tênis inverno ${index + 1}`}
-										loading="lazy"
-										priority={false}
-									/>
+									<figure key={index}>
+										<Image
+											className="sneaker-photo"
+											src={sneaker}
+											alt={`Tênis inverno ${index + 1}`}
+											loading="lazy"
+											priority={false}
+										/>
+										<figcaption className="sneaker-photo-subtitle">
+											{`Modelo ${index + 1}`}
+										</figcaption>
+									</figure>
 								))}
 							</div>
 						</React.Fragment>
@@ -157,16 +181,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					{getSeason() === "spring" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Primavera</h3>
-							<div className="collection-sneakers">
+							<div className="sneakers">
 								{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
-									<Image
-										key={index}
-										className="collection-sneaker-photo"
-										src={sneaker}
-										alt={`Tênis primavera ${index + 1}`}
-										loading="lazy"
-										priority={false}
-									/>
+									<figure key={index}>
+										<Image
+											className="sneaker-photo"
+											src={sneaker}
+											alt={`Tênis primavera ${index + 1}`}
+											loading="lazy"
+											priority={false}
+										/>
+										<figcaption className="sneaker-photo-subtitle">
+											{`Modelo ${index + 1}`}
+										</figcaption>
+									</figure>
 								))}
 							</div>
 						</React.Fragment>
