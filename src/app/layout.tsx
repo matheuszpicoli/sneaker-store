@@ -3,7 +3,6 @@ import React from "react"
 
 //- Next
 import type { Metadata } from "next"
-import Head from "next/head"
 
 //- Components
 import Header from "@/components/Header"
@@ -25,9 +24,6 @@ interface RootLayoutProps {
 export function RootLayout<T extends RootLayoutProps>(props: Readonly<T>): React.JSX.Element {
 	return (
 		<html lang="pt-br">
-			<Head>
-				<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-			</Head>
 			<body>
 				<header>
 					<Header />
