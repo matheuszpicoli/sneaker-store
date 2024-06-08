@@ -3,14 +3,19 @@
 //- React
 import React from "react"
 
-//- Next
-import Link from "next/link"
-
 //- Icons
 import * as Icon from "../icons/icons"
 
 export default function Header(): React.JSX.Element {
-	const returnToTop = (): void => window.scrollTo(0, 0)
+	const navigateTo = (element: string, event: React.MouseEvent): void => {
+		event.preventDefault()
+
+		window.history.pushState(null, window.location.pathname)
+
+		document.getElementById(element)?.scrollIntoView()
+	}
+
+	const returnToTop = () => window.scrollTo(0, 0)
 
 	return (
 		<nav className="navbar">
@@ -24,10 +29,26 @@ export default function Header(): React.JSX.Element {
 				</h1>
 			</div>
 			<div className="link-area">
-				<Link href="#masculine" className="link-nav">Masculino</Link>
-				<Link href="#feminine" className="link-nav">Feminino</Link>
-				<Link href="#teens" className="link-nav">Teens</Link>
-				<Link href="#collections" className="link-nav">Coleções</Link>
+				<div className="link-nav">
+					<a onClick={event => navigateTo("masculine", event)} className="link-to-path">
+						Masculino
+					</a>
+				</div>
+				<div className="link-nav">
+					<a onClick={event => navigateTo("feminine", event)} className="link-to-path">
+						Feminino
+					</a>
+				</div>
+				<div className="link-nav">
+					<a onClick={event => navigateTo("teens", event)} className="link-to-path">
+						Teens
+					</a>
+				</div>
+				<div className="link-nav">
+					<a onClick={event => navigateTo("collections", event)} className="link-to-path">
+						Coleções
+					</a>
+				</div>
 			</div>
 			<div className="search-area">
 				<label className="search-label" htmlFor="search-input">

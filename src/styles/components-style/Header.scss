@@ -34,13 +34,25 @@
 		.link-nav {
 			@include animation(link-show 500ms both);
 			color: $fullBlack;
+			cursor: pointer;
 			margin: $spacing;
 			text-decoration: none;
-			transition-duration: 300ms;
 
 			@for $linkNavIndex from 1 through 4 {
 				&:nth-child(#{$linkNavIndex}) {
 					animation-delay: #{150ms * $linkNavIndex};
+				}
+			}
+
+			.link-to-path {
+				transition-duration: 300ms;
+
+				&:hover {
+					opacity: .3;
+				}
+
+				&:active {
+					opacity: 1;
 				}
 			}
 		}
