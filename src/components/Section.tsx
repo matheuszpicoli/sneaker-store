@@ -12,44 +12,56 @@ interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"
 }
 
+type Month = {
+	january: 1,
+	february: 2,
+	march: 3,
+	april: 4,
+	may: 5,
+	june: 6,
+	july: 7,
+	august: 8,
+	september: 9,
+	october: 10,
+	november: 11,
+	december: 12
+}
+
+type MonthNumber = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+
+type DayOfMonth = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 29 | 30 | 31
+
 type Season = "summer" | "autumn" | "winter" | "spring" | undefined
 
-function isDateInRange(
-	day: number,
-	month: number,
-	startMonth: number,
-	startDay: number,
-	endMonth: number,
-	endDay: number
-): boolean {
-	const currentYear = new Date().getFullYear()
+function isDateInRange(startMonth: MonthNumber, startDay: DayOfMonth, endMonth: MonthNumber, endDay: DayOfMonth): boolean {
+	const currentMonth = new Date().getMonth() + 1
+	const currentDay = new Date().getDate()
 
-	const startDate = new Date(currentYear, startMonth - 1, startDay)
-	const currentDate = new Date(currentYear, month - 1, day)
-	const endDate = new Date(currentYear, endMonth - 1, endDay)
+	const startDate = new Date(startMonth - 1, startDay)
+	const currentDate = new Date(currentMonth - 1, currentDay)
+	const endDate = new Date(endMonth - 1, endDay)
 
 	return currentDate >= startDate && currentDate < endDate
 }
 
-function getSeason(date: Date = new Date()): Season {
-	const currentDay = date.getDate()
-	const currentMonth = date.getMonth() + 1
+function getSeason(): Season {
+	const month: Month = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12 }
 
 	switch (true) {
-		case isDateInRange(currentDay, currentMonth, 12, 22, 3, 20):
+		case isDateInRange(month.december, 22, month.march, 20):
 			return "summer"
-		case isDateInRange(currentDay, currentMonth, 3, 20, 6, 21):
+		case isDateInRange(month.march, 20, month.june, 21):
 			return "autumn"
-		case isDateInRange(currentDay, currentMonth, 6, 21, 9, 23):
+		case isDateInRange(month.june, 21, month.september, 23):
 			return "winter"
-		case isDateInRange(currentDay, currentMonth, 9, 23, 12, 22):
+		case isDateInRange(month.september, 23, month.december, 22):
 			return "spring"
 		default:
 			return undefined
 	}
 }
 
-const aboutTheSection: string = "Confira as nossas coleções de tênis para "
+const aboutTheSection: string = "Confira a nossa seção de tênis para".concat(" ")
 
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
 	return (
