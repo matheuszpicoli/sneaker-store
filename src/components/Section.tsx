@@ -3,7 +3,6 @@ import React from "react"
 
 //- Next
 import Image from "next/image"
-import type { StaticImageData } from "next/image"
 
 //- Images
 import { masculineSneakers, feminineSneakers, teensSneakers, collectionSneakers } from "../images/images"
@@ -63,6 +62,8 @@ function getSeason(): Season {
 
 const aboutTheSection: string = "Confira a nossa seção de tênis para".concat(" ")
 
+const maskForPrice = (price: number): string => `R$ ${price.toFixed(2).replace(".", ",")}`
+
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
 	return (
 		<React.Fragment>
@@ -74,17 +75,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							{`${aboutTheSection.concat("os homens.")}`}
 						</p>
 						<div className="sneakers">
-							{masculineSneakers.map((sneaker: StaticImageData, index: number) => (
+							{masculineSneakers.map((sneaker, index) => (
 								<figure key={index}>
 									<Image
 										className="sneaker-photo"
-										src={sneaker}
+										src={sneaker.image}
 										alt={`Tênis masculino ${index + 1}`}
 										loading="lazy"
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{`Modelo ${index + 1}`}
+										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										<p className="sneaker-price">
+											{maskForPrice(sneaker.price)}
+										</p>
 									</figcaption>
 								</figure>
 							))}
@@ -100,17 +104,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							{`${aboutTheSection.concat("as mulheres.")}`}
 						</p>
 						<div className="sneakers">
-							{feminineSneakers.map((sneaker: StaticImageData, index: number) => (
+							{feminineSneakers.map((sneaker, index) => (
 								<figure key={index}>
 									<Image
 										className="sneaker-photo"
-										src={sneaker}
+										src={sneaker.image}
 										alt={`Tênis feminino ${index + 1}`}
 										loading="lazy"
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{`Modelo ${index + 1}`}
+										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										<p className="sneaker-price">
+											{maskForPrice(sneaker.price)}
+										</p>
 									</figcaption>
 								</figure>
 							))}
@@ -126,17 +133,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							{`${aboutTheSection.concat("os jovens.")}`}
 						</p>
 						<div className="sneakers">
-							{teensSneakers.map((sneaker: StaticImageData, index: number) => (
+							{teensSneakers.map((sneaker, index) => (
 								<figure key={index}>
 									<Image
 										className="sneaker-photo"
-										src={sneaker}
+										src={sneaker.image}
 										alt={`Tênis adolescente ${index + 1}`}
 										loading="lazy"
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{`Modelo ${index + 1}`}
+										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										<p className="sneaker-price">
+											{maskForPrice(sneaker.price)}
+										</p>
 									</figcaption>
 								</figure>
 							))}
@@ -154,17 +164,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 									{`${aboutTheSection.concat("o verão.")}`}
 								</p>
 								<div className="sneakers">
-									{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
+									{collectionSneakers.summer.map((sneaker, index) => (
 										<figure key={index}>
 											<Image
 												className="sneaker-photo"
-												src={sneaker}
+												src={sneaker.image}
 												alt={`Tênis verão ${index + 1}`}
 												loading="lazy"
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{`Modelo ${index + 1}`}
+												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												<p className="sneaker-price">
+													{maskForPrice(sneaker.price)}
+												</p>
 											</figcaption>
 										</figure>
 									))}
@@ -180,17 +193,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 									{`${aboutTheSection.concat("o outono.")}`}
 								</p>
 								<div className="sneakers">
-									{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
+									{collectionSneakers.autumn.map((sneaker, index) => (
 										<figure key={index}>
 											<Image
 												className="sneaker-photo"
-												src={sneaker}
+												src={sneaker.image}
 												alt={`Tênis outono ${index + 1}`}
 												loading="lazy"
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{`Modelo ${index + 1}`}
+												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												<p className="sneaker-price">
+													{maskForPrice(sneaker.price)}
+												</p>
 											</figcaption>
 										</figure>
 									))}
@@ -206,17 +222,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 									{`${aboutTheSection.concat("o inverno.")}`}
 								</p>
 								<div className="sneakers">
-									{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
+									{collectionSneakers.winter.map((sneaker, index) => (
 										<figure key={index}>
 											<Image
 												className="sneaker-photo"
-												src={sneaker}
+												src={sneaker.image}
 												alt={`Tênis inverno ${index + 1}`}
 												loading="lazy"
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{`Modelo ${index + 1}`}
+												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												<p className="sneaker-price">
+													{maskForPrice(sneaker.price)}
+												</p>
 											</figcaption>
 										</figure>
 									))}
@@ -232,17 +251,20 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 									{`${aboutTheSection.concat("a primavera.")}`}
 								</p>
 								<div className="sneakers">
-									{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
+									{collectionSneakers.spring.map((sneaker, index) => (
 										<figure key={index}>
 											<Image
 												className="sneaker-photo"
-												src={sneaker}
+												src={sneaker.image}
 												alt={`Tênis primavera ${index + 1}`}
 												loading="lazy"
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{`Modelo ${index + 1}`}
+												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												<p className="sneaker-price">
+													{maskForPrice(sneaker.price)}
+												</p>
 											</figcaption>
 										</figure>
 									))}

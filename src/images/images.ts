@@ -1,6 +1,14 @@
 //- Next
 import type { StaticImageData } from "next/image"
 
+type Season = "summer" | "autumn" | "winter" | "spring"
+
+type SneakerDetails = {
+	image: StaticImageData
+	model: string
+	price: number
+}
+
 //? Collections
 import autumnSneaker1 from "./collections/autumn/autumnSneaker1.jpg"
 import autumnSneaker2 from "./collections/autumn/autumnSneaker2.jpg"
@@ -50,23 +58,164 @@ import highlight6 from "./sneaker highlight/highlight6.jpg"
 import highlight7 from "./sneaker highlight/highlight7.jpg"
 import highlight8 from "./sneaker highlight/highlight8.jpg"
 
-export const collectionSneakers: { [season: string]: StaticImageData[] } = {
-	summer: [summerSneaker1, summerSneaker2, summerSneaker3, summerSneaker4],
-	autumn: [autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4],
-	winter: [winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4],
-	spring: [springSneaker1, springSneaker2, springSneaker3, springSneaker4]
+export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
+	summer: [
+		{
+			image: summerSneaker1,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: summerSneaker2,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: summerSneaker3,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: summerSneaker4,
+			model: "Modelo",
+			price: 0
+		}
+	],
+	autumn: [
+		{
+			image: autumnSneaker1,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: autumnSneaker2,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: autumnSneaker3,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: autumnSneaker4,
+			model: "Modelo",
+			price: 0
+		}
+	],
+	winter: [
+		{
+			image: winterSneaker1,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: winterSneaker2,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: winterSneaker3,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: winterSneaker4,
+			model: "Modelo",
+			price: 0
+		}
+	],
+	spring: [
+		{
+			image: springSneaker1,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: springSneaker2,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: springSneaker3,
+			model: "Modelo",
+			price: 0
+		},
+		{
+			image: springSneaker4,
+			model: "Modelo",
+			price: 0
+		}
+	]
 }
 
-export const feminineSneakers: StaticImageData[] = [
-	femmeSneaker1, femmeSneaker2, femmeSneaker3, femmeSneaker4
+export const feminineSneakers: SneakerDetails[] = [
+	{
+		image: femmeSneaker1,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: femmeSneaker2,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: femmeSneaker3,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: femmeSneaker4,
+		model: "Modelo",
+		price: 0
+	}
 ]
 
-export const masculineSneakers: StaticImageData[] = [
-	maleSneaker1, maleSneaker2, maleSneaker3, maleSneaker4
+export const masculineSneakers: SneakerDetails[] = [
+	{
+		image: maleSneaker1,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: maleSneaker2,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: maleSneaker3,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: maleSneaker4,
+		model: "Modelo",
+		price: 0
+	}
 ]
 
-export const teensSneakers: StaticImageData[] = [
-	teenSneaker1, teenSneaker2, teenSneaker3, teenSneaker4
+export const teensSneakers: SneakerDetails[] = [
+	{
+		image: teenSneaker1,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: teenSneaker2,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: teenSneaker3,
+		model: "Modelo",
+		price: 0
+	},
+	{
+		image: teenSneaker4,
+		model: "Modelo",
+		price: 0
+	}
 ]
 
 export const highlightSneakers: StaticImageData[] = [
