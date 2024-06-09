@@ -62,89 +62,89 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 	summer: [
 		{
 			image: summerSneaker1,
-			model: "Modelo",
-			price: 0
+			model: "Knee-High",
+			price: 179.99
 		},
 		{
 			image: summerSneaker2,
-			model: "Modelo",
-			price: 0
+			model: "Alcantara",
+			price: 299.99
 		},
 		{
 			image: summerSneaker3,
-			model: "Modelo",
-			price: 0
+			model: "Indigenous",
+			price: 149.99
 		},
 		{
 			image: summerSneaker4,
-			model: "Modelo",
-			price: 0
+			model: "Shoeless Grandpa",
+			price: 119.99
 		}
 	],
 	autumn: [
 		{
 			image: autumnSneaker1,
-			model: "Modelo",
-			price: 0
+			model: "Free print",
+			price: 149.99
 		},
 		{
 			image: autumnSneaker2,
-			model: "Modelo",
-			price: 0
+			model: "All the time",
+			price: 139.99
 		},
 		{
 			image: autumnSneaker3,
-			model: "Modelo",
-			price: 0
+			model: "Tribal",
+			price: 109.99
 		},
 		{
 			image: autumnSneaker4,
-			model: "Modelo",
-			price: 0
+			model: "Perforated",
+			price: 99.99
 		}
 	],
 	winter: [
 		{
 			image: winterSneaker1,
-			model: "Modelo",
-			price: 0
+			model: "High top crochet",
+			price: 159.99
 		},
 		{
 			image: winterSneaker2,
-			model: "Modelo",
-			price: 0
+			model: "Artisanal chocolate",
+			price: 139.99
 		},
 		{
 			image: winterSneaker3,
-			model: "Modelo",
-			price: 0
+			model: "Tribal slip-on",
+			price: 179.99
 		},
 		{
 			image: winterSneaker4,
-			model: "Modelo",
-			price: 0
+			model: "Bold",
+			price: 209.99
 		}
 	],
 	spring: [
 		{
 			image: springSneaker1,
-			model: "Modelo",
-			price: 0
+			model: "Graffiti wall",
+			price: 109.99
 		},
 		{
 			image: springSneaker2,
-			model: "Modelo",
-			price: 0
+			model: "Colored beige",
+			price: 99.99
 		},
 		{
 			image: springSneaker3,
-			model: "Modelo",
-			price: 0
+			model: "Magazine cover",
+			price: 179.99
 		},
 		{
 			image: springSneaker4,
-			model: "Modelo",
-			price: 0
+			model: "No rendering",
+			price: 119.99
 		}
 	]
 }
@@ -152,73 +152,70 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 export const feminineSneakers: SneakerDetails[] = [
 	{
 		image: femmeSneaker1,
-		model: "Modelo",
-		price: 0
+		model: "Pink",
+		price: 159.99
 	},
 	{
 		image: femmeSneaker2,
-		model: "Modelo",
-		price: 0
+		model: "Dear",
+		price: 119.99
 	},
 	{
 		image: femmeSneaker3,
-		model: "Modelo",
-		price: 0
+		model: "Empowered",
+		price: 239.99
 	},
 	{
 		image: femmeSneaker4,
-		model: "Modelo",
-		price: 0
+		model: "Anteater face",
+		price: 179.99
 	}
 ]
 
 export const masculineSneakers: SneakerDetails[] = [
 	{
 		image: maleSneaker1,
-		model: "Modelo",
-		price: 0
+		model: "Simple man",
+		price: 199.99
 	},
 	{
 		image: maleSneaker2,
-		model: "Modelo",
-		price: 0
+		model: "Fish scale",
+		price: 109.99
 	},
 	{
 		image: maleSneaker3,
-		model: "Modelo",
-		price: 0
+		model: "Hurry",
+		price: 139.99
 	},
 	{
 		image: maleSneaker4,
-		model: "Modelo",
-		price: 0
+		model: "Neat",
+		price: 249.99
 	}
 ]
 
 export const teensSneakers: SneakerDetails[] = [
 	{
 		image: teenSneaker1,
-		model: "Modelo",
-		price: 0
+		model: "Thick",
+		price: 239.99
 	},
 	{
 		image: teenSneaker2,
-		model: "Modelo",
-		price: 0
+		model: "Stationer\'s",
+		price: 99.99
 	},
 	{
 		image: teenSneaker3,
-		model: "Modelo",
-		price: 0
+		model: "Good luck",
+		price: 199.99
 	},
 	{
 		image: teenSneaker4,
-		model: "Modelo",
-		price: 0
+		model: "Color party",
+		price: 139.99
 	}
 ]
 
-export const highlightSneakers: StaticImageData[] = [
-	highlight1, highlight2, highlight3, highlight4,
-	highlight5, highlight6, highlight7, highlight8
-]
+export const highlightSneakers: StaticImageData[] = [highlight1, highlight2, highlight3, highlight4, highlight5, highlight6, highlight7, highlight8]

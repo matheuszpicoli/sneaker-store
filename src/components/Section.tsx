@@ -85,7 +85,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										{sneaker.model}
 										<p className="sneaker-price">
 											{maskForPrice(sneaker.price)}
 										</p>
@@ -114,7 +114,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										{sneaker.model}
 										<p className="sneaker-price">
 											{maskForPrice(sneaker.price)}
 										</p>
@@ -143,7 +143,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 										priority={false}
 									/>
 									<figcaption className="sneaker-photo-subtitle">
-										{sneaker.model.concat(" ").concat((index + 1).toString())}
+										{sneaker.model}
 										<p className="sneaker-price">
 											{maskForPrice(sneaker.price)}
 										</p>
@@ -174,7 +174,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												{sneaker.model}
 												<p className="sneaker-price">
 													{maskForPrice(sneaker.price)}
 												</p>
@@ -203,7 +203,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												{sneaker.model}
 												<p className="sneaker-price">
 													{maskForPrice(sneaker.price)}
 												</p>
@@ -232,7 +232,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												{sneaker.model}
 												<p className="sneaker-price">
 													{maskForPrice(sneaker.price)}
 												</p>
@@ -261,7 +261,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 												priority={false}
 											/>
 											<figcaption className="sneaker-photo-subtitle">
-												{sneaker.model.concat(" ").concat((index + 1).toString())}
+												{sneaker.model}
 												<p className="sneaker-price">
 													{maskForPrice(sneaker.price)}
 												</p>
