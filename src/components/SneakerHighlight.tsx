@@ -6,8 +6,8 @@ import React from "react"
 //- Next
 import Image, { StaticImageData } from "next/image"
 
-//- Images
-import { highlightSneakers } from "../images/images"
+//- Sneakers
+import { highlightSneakers } from "../sneakers/sneakers"
 
 //- Swiper
 import "swiper/css"

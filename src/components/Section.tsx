@@ -4,8 +4,8 @@ import React from "react"
 //- Next
 import Image from "next/image"
 
-//- Images
-import { masculineSneakers, feminineSneakers, teensSneakers, collectionSneakers } from "../images/images"
+//- Sneakers
+import { masculineSneakers, feminineSneakers, teensSneakers, collectionSneakers } from "../sneakers/sneakers"
 
 interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"
