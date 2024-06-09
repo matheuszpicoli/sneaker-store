@@ -1,5 +1,5 @@
 //- Next
-import { StaticImageData } from "next/image"
+import type { StaticImageData } from "next/image"
 
 //? Collections
 import autumnSneaker1 from "./collections/autumn/autumnSneaker1.jpg"
@@ -51,10 +51,10 @@ import highlight7 from "./sneaker highlight/highlight7.jpg"
 import highlight8 from "./sneaker highlight/highlight8.jpg"
 
 export const collectionSneakers: { [season: string]: StaticImageData[] } = {
-	autumn: [autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4],
-	spring: [springSneaker1, springSneaker2, springSneaker3, springSneaker4],
 	summer: [summerSneaker1, summerSneaker2, summerSneaker3, summerSneaker4],
-	winter: [winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4]
+	autumn: [autumnSneaker1, autumnSneaker2, autumnSneaker3, autumnSneaker4],
+	winter: [winterSneaker1, winterSneaker2, winterSneaker3, winterSneaker4],
+	spring: [springSneaker1, springSneaker2, springSneaker3, springSneaker4]
 }
 
 export const feminineSneakers: StaticImageData[] = [

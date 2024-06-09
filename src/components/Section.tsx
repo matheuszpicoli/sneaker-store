@@ -2,7 +2,8 @@
 import React from "react"
 
 //- Next
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
+import type { StaticImageData } from "next/image"
 
 //- Images
 import { masculineSneakers, feminineSneakers, teensSneakers, collectionSneakers } from "../images/images"
@@ -11,7 +12,7 @@ interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"
 }
 
-type Season = "summer" | "autumn" | "winter" | "spring"
+type Season = "summer" | "autumn" | "winter" | "spring" | undefined
 
 function isDateInRange(
 	day: number,
@@ -31,20 +32,21 @@ function isDateInRange(
 }
 
 function getSeason(date: Date = new Date()): Season {
-	const day = date.getDate()
-	const month = date.getMonth() + 1
+	const currentDay = date.getDate()
+	const currentMonth = date.getMonth() + 1
 
-	if (isDateInRange(day, month, 12, 22, 3, 20)) {
-		return "summer"
-	} else if (isDateInRange(day, month, 3, 20, 6, 21)) {
-		return "autumn"
-	} else if (isDateInRange(day, month, 6, 21, 9, 23)) {
-		return "winter"
-	} else if (isDateInRange(day, month, 9, 23, 12, 22)) {
-		return "spring"
+	switch (true) {
+		case isDateInRange(currentDay, currentMonth, 12, 22, 3, 20):
+			return "summer"
+		case isDateInRange(currentDay, currentMonth, 3, 20, 6, 21):
+			return "autumn"
+		case isDateInRange(currentDay, currentMonth, 6, 21, 9, 23):
+			return "winter"
+		case isDateInRange(currentDay, currentMonth, 9, 23, 12, 22):
+			return "spring"
+		default:
+			return undefined
 	}
-
-	throw new Error("Data inválida")
 }
 
 const aboutTheSection: string = "Confira as nossas coleções de tênis para "
@@ -235,6 +237,9 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 								</div>
 							</div>
 						</React.Fragment>
+					)}
+					{getSeason() === undefined && (
+						<h3 className="section-title">Em breve</h3>
 					)}
 				</section>
 			)}
