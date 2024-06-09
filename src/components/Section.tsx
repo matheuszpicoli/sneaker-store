@@ -47,69 +47,86 @@ function getSeason(date: Date = new Date()): Season {
 	throw new Error("Data inválida")
 }
 
+const aboutTheSection: string = "Confira as nossas coleções de tênis para "
+
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
 	return (
 		<React.Fragment>
 			{props.reference === "masculine" && (
 				<section id="masculine" className="masculine">
 					<h3 className="section-title">Masculino</h3>
-					<div className="sneakers">
-						{masculineSneakers.map((sneaker: StaticImageData, index: number) => (
-							<figure key={index}>
-								<Image
-									className="sneaker-photo"
-									src={sneaker}
-									alt={`Tênis masculino ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-								<figcaption className="sneaker-photo-subtitle">
-									{`Modelo ${index + 1}`}
-								</figcaption>
-							</figure>
-						))}
+					<div className="content">
+						<p className="about">
+							{`${aboutTheSection.concat("os homens.")}`}
+						</p>
+						<div className="sneakers">
+							{masculineSneakers.map((sneaker: StaticImageData, index: number) => (
+								<figure key={index}>
+									<Image
+										className="sneaker-photo"
+										src={sneaker}
+										alt={`Tênis masculino ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+									<figcaption className="sneaker-photo-subtitle">
+										{`Modelo ${index + 1}`}
+									</figcaption>
+								</figure>
+							))}
+						</div>
 					</div>
 				</section>
 			)}
 			{props.reference === "feminine" && (
 				<section id="feminine" className="feminine">
 					<h3 className="section-title">Feminino</h3>
-					<div className="sneakers">
-						{feminineSneakers.map((sneaker: StaticImageData, index: number) => (
-							<figure key={index}>
-								<Image
-									className="sneaker-photo"
-									src={sneaker}
-									alt={`Tênis feminino ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-								<figcaption className="sneaker-photo-subtitle">
-									{`Modelo ${index + 1}`}
-								</figcaption>
-							</figure>
-						))}
+					<div className="content">
+						<p className="about">
+							{`${aboutTheSection.concat("as mulheres.")}`}
+						</p>
+						<div className="sneakers">
+							{feminineSneakers.map((sneaker: StaticImageData, index: number) => (
+								<figure key={index}>
+									<Image
+										className="sneaker-photo"
+										src={sneaker}
+										alt={`Tênis feminino ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+									<figcaption className="sneaker-photo-subtitle">
+										{`Modelo ${index + 1}`}
+									</figcaption>
+								</figure>
+							))}
+						</div>
 					</div>
 				</section>
 			)}
 			{props.reference === "teens" && (
 				<section id="teens" className="teens">
 					<h3 className="section-title">Teens</h3>
-					<div className="sneakers">
-						{teensSneakers.map((sneaker: StaticImageData, index: number) => (
-							<figure key={index}>
-								<Image
-									className="sneaker-photo"
-									src={sneaker}
-									alt={`Tênis adolescente ${index + 1}`}
-									loading="lazy"
-									priority={false}
-								/>
-								<figcaption className="sneaker-photo-subtitle">
-									{`Modelo ${index + 1}`}
-								</figcaption>
-							</figure>
-						))}
+					<div className="content">
+						<p className="about">
+							{`${aboutTheSection.concat("os jovens.")}`}
+						</p>
+						<div className="sneakers">
+							{teensSneakers.map((sneaker: StaticImageData, index: number) => (
+								<figure key={index}>
+									<Image
+										className="sneaker-photo"
+										src={sneaker}
+										alt={`Tênis adolescente ${index + 1}`}
+										loading="lazy"
+										priority={false}
+									/>
+									<figcaption className="sneaker-photo-subtitle">
+										{`Modelo ${index + 1}`}
+									</figcaption>
+								</figure>
+							))}
+						</div>
 					</div>
 				</section>
 			)}
@@ -118,84 +135,104 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					{getSeason() === "summer" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Verão</h3>
-							<div className="sneakers">
-								{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
-									<figure key={index}>
-										<Image
-											className="sneaker-photo"
-											src={sneaker}
-											alt={`Tênis verão ${index + 1}`}
-											loading="lazy"
-											priority={false}
-										/>
-										<figcaption className="sneaker-photo-subtitle">
-											{`Modelo ${index + 1}`}
-										</figcaption>
-									</figure>
-								))}
+							<div className="content">
+								<p className="about">
+									{`${aboutTheSection.concat("o verão.")}`}
+								</p>
+								<div className="sneakers">
+									{collectionSneakers.summer.map((sneaker: StaticImageData, index: number) => (
+										<figure key={index}>
+											<Image
+												className="sneaker-photo"
+												src={sneaker}
+												alt={`Tênis verão ${index + 1}`}
+												loading="lazy"
+												priority={false}
+											/>
+											<figcaption className="sneaker-photo-subtitle">
+												{`Modelo ${index + 1}`}
+											</figcaption>
+										</figure>
+									))}
+								</div>
 							</div>
 						</React.Fragment>
 					)}
 					{getSeason() === "autumn" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Outono</h3>
-							<div className="sneakers">
-								{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
-									<figure key={index}>
-										<Image
-											className="sneaker-photo"
-											src={sneaker}
-											alt={`Tênis outono ${index + 1}`}
-											loading="lazy"
-											priority={false}
-										/>
-										<figcaption className="sneaker-photo-subtitle">
-											{`Modelo ${index + 1}`}
-										</figcaption>
-									</figure>
-								))}
+							<div className="content">
+								<p className="about">
+									{`${aboutTheSection.concat("o outono.")}`}
+								</p>
+								<div className="sneakers">
+									{collectionSneakers.autumn.map((sneaker: StaticImageData, index: number) => (
+										<figure key={index}>
+											<Image
+												className="sneaker-photo"
+												src={sneaker}
+												alt={`Tênis outono ${index + 1}`}
+												loading="lazy"
+												priority={false}
+											/>
+											<figcaption className="sneaker-photo-subtitle">
+												{`Modelo ${index + 1}`}
+											</figcaption>
+										</figure>
+									))}
+								</div>
 							</div>
 						</React.Fragment>
 					)}
 					{getSeason() === "winter" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Inverno</h3>
-							<div className="sneakers">
-								{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
-									<figure key={index}>
-										<Image
-											className="sneaker-photo"
-											src={sneaker}
-											alt={`Tênis inverno ${index + 1}`}
-											loading="lazy"
-											priority={false}
-										/>
-										<figcaption className="sneaker-photo-subtitle">
-											{`Modelo ${index + 1}`}
-										</figcaption>
-									</figure>
-								))}
+							<div className="content">
+								<p className="about">
+									{`${aboutTheSection.concat("o inverno.")}`}
+								</p>
+								<div className="sneakers">
+									{collectionSneakers.winter.map((sneaker: StaticImageData, index: number) => (
+										<figure key={index}>
+											<Image
+												className="sneaker-photo"
+												src={sneaker}
+												alt={`Tênis inverno ${index + 1}`}
+												loading="lazy"
+												priority={false}
+											/>
+											<figcaption className="sneaker-photo-subtitle">
+												{`Modelo ${index + 1}`}
+											</figcaption>
+										</figure>
+									))}
+								</div>
 							</div>
 						</React.Fragment>
 					)}
 					{getSeason() === "spring" && (
 						<React.Fragment>
 							<h3 className="section-title">Coleções de Primavera</h3>
-							<div className="sneakers">
-								{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
-									<figure key={index}>
-										<Image
-											className="sneaker-photo"
-											src={sneaker}
-											alt={`Tênis primavera ${index + 1}`}
-											loading="lazy"
-											priority={false}
-										/>
-										<figcaption className="sneaker-photo-subtitle">
-											{`Modelo ${index + 1}`}
-										</figcaption>
-									</figure>
-								))}
+							<div className="content">
+								<p className="about">
+									{`${aboutTheSection.concat("a primavera.")}`}
+								</p>
+								<div className="sneakers">
+									{collectionSneakers.spring.map((sneaker: StaticImageData, index: number) => (
+										<figure key={index}>
+											<Image
+												className="sneaker-photo"
+												src={sneaker}
+												alt={`Tênis primavera ${index + 1}`}
+												loading="lazy"
+												priority={false}
+											/>
+											<figcaption className="sneaker-photo-subtitle">
+												{`Modelo ${index + 1}`}
+											</figcaption>
+										</figure>
+									))}
+								</div>
 							</div>
 						</React.Fragment>
 					)}

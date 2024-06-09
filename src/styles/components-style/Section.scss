@@ -1,38 +1,45 @@
 :is(.masculine, .feminine, .teens, .collections) {
 	color: $white;
+	cursor: default;
 	display: flex;
 	flex-direction: column;
-	font-size: 4em;
 	min-height: 100vh;
 	padding: calc($headerHeight / 4) 0;
 
 	.section-title {
-		cursor: default;
 		font-family: "RethinkSans Extra Bold", sans-serif;
-		margin: 0 15px;
+		font-size: 4em;
+		margin: 40px 0 0 15px;
 	}
 
-	.sneakers {
-		display: flex;
-		justify-content: space-around;
-		flex-direction: row;
-		width: 100%;
+	.content {
+		padding: 15px;
 
-		.sneaker-photo {
-			@include filter(drop-shadow(4px 4px 4px #00000080));
-			border-radius: 50%;
-			border: 5px solid $white;
-			height: 250px;
-			margin-top: 1em;
-			pointer-events: none;
-			width: 250px;
+		.about {
+			margin-bottom: 1em;
 		}
 
-		.sneaker-photo-subtitle {
-			cursor: default;
-			font-family: "RethinkSans Medium Italic", sans-serif;
-			font-size: 1rem;
-			text-align: center;
+		.sneakers {
+			display: flex;
+			justify-content: space-around;
+			flex-direction: row;
+			width: 100%;
+
+			.sneaker-photo {
+				@include filter(drop-shadow(4px 4px 4px #00000080));
+				border-radius: 50%;
+				border: 5px solid $white;
+				height: 250px;
+				pointer-events: none;
+				width: 250px;
+			}
+
+			.sneaker-photo-subtitle {
+				font-family: "RethinkSans Medium Italic", sans-serif;
+				font-size: 1rem;
+				margin-top: .5em;
+				text-align: center;
+			}
 		}
 	}
 }
