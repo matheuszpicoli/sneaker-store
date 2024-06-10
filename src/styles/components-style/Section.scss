@@ -25,9 +25,9 @@
 
 			.sneaker-photo {
 				@include filter(drop-shadow(4px 4px 4px #00000080));
-				@include transition(800ms);
+				@include transition(600ms);
 				border-radius: 50%;
-				border: 5px solid $white;
+				border: 5px double #00000030;
 				cursor: pointer;
 				height: 200px;
 				margin-top: 2em;
