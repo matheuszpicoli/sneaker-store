@@ -38,6 +38,12 @@
 					@include transform(rotateY(360deg) translateY(-1em));
 					@include filter(brightness(0.8));
 				}
+
+				&:active {
+					@include filter(brightness(1));
+					@include transition(none);
+					scale: 0.9;
+				}
 			}
 
 			.sneaker-photo-subtitle {
