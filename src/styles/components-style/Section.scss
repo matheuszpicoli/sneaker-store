@@ -16,7 +16,7 @@
 		padding: 15px;
 
 		.about {
-			margin-bottom: 1em;
+			margin-bottom: 2em;
 		}
 
 		.sneakers {
@@ -27,11 +27,17 @@
 
 			.sneaker-photo {
 				@include filter(drop-shadow(4px 4px 4px #00000080));
+				@include transition(800ms);
 				border-radius: 50%;
 				border: 5px solid $white;
+				cursor: pointer;
 				height: 250px;
-				pointer-events: none;
 				width: 250px;
+
+				&:hover {
+					@include transform(rotateY(360deg) translateY(-1em));
+					@include filter(brightness(0.8));
+				}
 			}
 
 			.sneaker-photo-subtitle {

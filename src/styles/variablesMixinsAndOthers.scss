@@ -21,12 +21,19 @@ $headerHeight: 3em;
 	top: $stickyValue;
 }
 
-@mixin transform($transformProperty) {
-	transform: $transformProperty;
-	-o-transform: $transformProperty;
-	-ms-transform: $transformProperty;
-	-webkit-transform: $transformProperty;
-	-moz-transform: $transformProperty;
+@mixin transform($transformProperties...) {
+	transform: $transformProperties;
+	-o-transform: $transformProperties;
+	-ms-transform: $transformProperties;
+	-webkit-transform: $transformProperties;
+	-moz-transform: $transformProperties;
+}
+
+@mixin transition($transitionProperties...) {
+	transition: $transitionProperties;
+	-moz-transition: $transitionProperties;
+	-o-transition: $transitionProperties;
+	-webkit-transition: $transitionProperties;
 }
 
 @mixin filter($filterProperties...) {
@@ -41,6 +48,13 @@ $headerHeight: 3em;
 	-ms-animation: $animationProperties;
 	-o-animation: $animationProperties;
 	-webkit-animation: $animationProperties;
+}
+
+@mixin animation-delay($animationDelayProperty) {
+	animation-delay: $animationDelayProperty;
+	-moz-animation-delay: $animationDelayProperty;
+	-o-animation-delay: $animationDelayProperty;
+	-webkit-animation-delay: $animationDelayProperty;
 }
 
 @mixin keyframes($animationName) {

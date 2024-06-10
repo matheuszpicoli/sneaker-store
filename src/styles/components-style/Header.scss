@@ -38,14 +38,14 @@
 			margin: $spacing;
 			text-decoration: none;
 
-			@for $linkNavIndex from 1 through 4 {
-				&:nth-child(#{$linkNavIndex}) {
-					animation-delay: #{150ms * $linkNavIndex};
+			@for $child from 1 through 4 {
+				&:nth-child(#{$child}) {
+					@include animation-delay(#{150ms * $child});
 				}
 			}
 
 			.link-to-path {
-				transition-duration: 300ms;
+				@include transition(300ms);
 
 				&:hover {
 					opacity: .3;
@@ -68,12 +68,12 @@
 		}
 
 		#search-input {
+			@include transition(300ms);
 			background-color: $white;
 			border-radius: 0.15em;
 			border: .5px solid $fullBlack;
 			outline: none;
 			padding: 5px;
-			transition-duration: 300ms;
 
 			&:hover {
 				background-color: #ffffff;
@@ -86,9 +86,9 @@
 
 		.search-icon {
 			@include iconSize;
+			@include transition(300ms);
 			cursor: pointer;
 			display: inline;
-			transition-duration: 300ms;
 			vertical-align: middle;
 
 			&:hover {
