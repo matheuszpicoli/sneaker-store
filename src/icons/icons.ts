@@ -1,3 +1,4 @@
 //- React icons
 export { GiRunningShoe as Sneaker } from "react-icons/gi"
-export { GrFormSearch as MagnifyingGlass } from "react-icons/gr"
+export { MdOutlineFilterAlt as Filter } from "react-icons/md"
+export { MdOutlineFilterAltOff as Unfilter } from "react-icons/md"

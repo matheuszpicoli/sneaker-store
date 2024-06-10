@@ -7,7 +7,7 @@ import React from "react"
 import * as Icon from "../icons/icons"
 
 export default function Header(): React.JSX.Element {
-	const navigateTo = (element: string, event: React.MouseEvent): void => {
+	function navigateTo(element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
 		event.preventDefault()
 
 		window.history.pushState(null, window.location.pathname)
@@ -51,14 +51,15 @@ export default function Header(): React.JSX.Element {
 				</div>
 			</div>
 			<div className="search-area">
+				{/* Mexer depois */}
 				<label className="search-label" htmlFor="search-input">
-					<Icon.MagnifyingGlass className="search-icon" />
+					<Icon.Filter className="search-icon" />
 				</label>
 				<input
 					id="search-input"
 					type="search"
 					name="search-input"
-					placeholder="Pesquisar"
+					placeholder="Filtrar"
 				/>
 			</div>
 		</nav>

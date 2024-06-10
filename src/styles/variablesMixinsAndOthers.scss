@@ -1,13 +1,14 @@
 //- Variables
-$fullBlack: #000000;
-$spacing: 0 1em;
-$white: #f6f6f6;
-$orange: #ff9900;
-$masculineColor: #1642b2;
-$feminineColor: #19a39c;
-$teensColor: #880000;
 $collectionsColor: #008236;
+$feminineColor: #19a39c;
+$fullBlack: #000000;
+$gradientOpacity: 0.7;
 $headerHeight: 3em;
+$masculineColor: #1642b2;
+$orange: #ff9900;
+$spacing: 0 1em;
+$teensColor: #880000;
+$white: #f6f6f6;
 
 //- Mixins
 @mixin iconSize {
@@ -19,6 +20,13 @@ $headerHeight: 3em;
 	position: sticky;
 	position: -webkit-sticky;
 	top: $stickyValue;
+}
+
+@mixin linear-gradient($linearGradientProperties...) {
+	background: linear-gradient($linearGradientProperties);
+	background: -moz-linear-gradient($linearGradientProperties);
+	background: -o-linear-gradient($linearGradientProperties);
+	background: -webkit-linear-gradient($linearGradientProperties);
 }
 
 @mixin transform($transformProperties...) {

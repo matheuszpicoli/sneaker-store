@@ -1,9 +1,9 @@
 :is(.masculine, .feminine, .teens, .collections) {
+	border-top: 2.5px solid $white;
 	color: $white;
 	cursor: default;
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
 	padding: calc($headerHeight / 4) 0;
 
 	.section-title {
@@ -15,14 +15,11 @@
 	.content {
 		padding: 15px;
 
-		.about {
-			margin-bottom: 2em;
-		}
-
 		.sneakers {
 			display: flex;
-			justify-content: space-around;
 			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-around;
 			width: 100%;
 
 			.sneaker-photo {
@@ -31,8 +28,9 @@
 				border-radius: 50%;
 				border: 5px solid $white;
 				cursor: pointer;
-				height: 250px;
-				width: 250px;
+				height: 200px;
+				margin-top: 2em;
+				width: 200px;
 
 				&:hover {
 					@include transform(rotateY(360deg) translateY(-1em));
@@ -57,17 +55,17 @@
 }
 
 .masculine {
-	background-color: $masculineColor;
+	@include linear-gradient(to top left, $masculineColor 20%, rgba($masculineColor, $gradientOpacity) 80%);
 }
 
 .feminine {
-	background-color: $feminineColor;
+	@include linear-gradient(to bottom right, $feminineColor 20%, rgba($feminineColor, $gradientOpacity) 80%);
 }
 
 .teens {
-	background-color: $teensColor;
+	@include linear-gradient(to top right, $teensColor 20%, rgba($teensColor, $gradientOpacity) 80%);
 }
 
 .collections {
-	background-color: $collectionsColor;
+	@include linear-gradient(to bottom left, $collectionsColor 20%, rgba($collectionsColor, $gradientOpacity) 80%);
 }
