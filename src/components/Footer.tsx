@@ -7,6 +7,9 @@ import type { IconType } from "react-icons"
 //- Icons
 import * as Icon from "../icons/icons"
 
+//- List
+import { listModel } from "@/api/lists"
+
 interface AdditionalInformationProps {
 	icon: IconType
 	title: string
@@ -24,71 +27,23 @@ function AdditionalInformation<T extends AdditionalInformationProps>(props: T): 
 }
 
 interface ListProps {
-	model: "institutional" | "help" | "sales center" | "relationship center"
+	title: string,
+	model: "institutional" | "help" | "salesCenter" | "relationshipCenter"
 }
 
 function List<T extends ListProps>(props: T): React.JSX.Element {
-
-	const maskForCellphone = (cellphone: number): string => {
-		const mask = new RegExp(/^([0-9]{2})([0-9]{4})([0-9]{4})$/)
-
-		return cellphone.toString().replace(mask, "($1) $2-$3")
-	}
-
 	return (
 		<div className="list">
-			{props.model === "institutional" && (
-				<React.Fragment>
-					<p className="list-title">Institucional</p>
-					<ul className="list-items">
-						<li className="list-item">Sobre a MP Sneakers</li>
-						<li className="list-item">Política de Privacidade</li>
-						<li className="list-item">Trabalhe Conosco</li>
-						<li className="list-item">Programa de Afiliados</li>
-						<li className="list-item">Soluções Corporativas</li>
-						<li className="list-item">Regulamentos</li>
-						<li className="list-item">Relatórios</li>
-						<li className="list-item">Programa de Integridade</li>
-						<li className="list-item">Guia MP Sneakers</li>
-						<li className="list-item">Blog</li>
-						<li className="list-item">Black Friday</li>
+			<React.Fragment>
+				<p className="list-title">{props.title}</p>
+				{listModel[props.model].map((item, index) => (
+					<ul key={index}
+						className="list-items"
+					>
+						<li className="list-item">{item}</li>
 					</ul>
-				</React.Fragment>
-			)}
-			{props.model === "help" && (
-				<React.Fragment>
-					<p className="list-title">Ajuda</p>
-					<ul className="list-items">
-						<li className="list-item">Trocas e Devoluções</li>
-						<li className="list-item">Entregas</li>
-						<li className="list-item">Minha Conta</li>
-						<li className="list-item">Meus Pedidos</li>
-						<li className="list-item">Pagamentos</li>
-						<li className="list-item">Cancelamentos</li>
-						<li className="list-item">MP Card</li>
-						<li className="list-item">Segurança e Privacidade</li>
-						<li className="list-item">Como Comprar</li>
-						<li className="list-item">Acessibilidade</li>
-					</ul>
-				</React.Fragment>
-			)}
-			{props.model === "sales center" && (
-				<React.Fragment>
-					<p className="list-title">Central de Vendas</p>
-					<ul className="list-items">
-						<li className="list-item">{maskForCellphone(2122287488)}</li>
-						<li className="list-item">{maskForCellphone(2122175443)}</li>
-					</ul>
-				</React.Fragment>
-			)}
-			{props.model === "relationship center" && (
-				<React.Fragment>
-					<p className="list-title">Central de relacionamento</p>
-					<ul className="list-items">
-						<li className="list-item">Tire suas dúvidas</li>
-					</ul>
-				</React.Fragment>
-			)}
+				))}
+			</React.Fragment>
 		</div>
 	)
 }
@@ -129,10 +84,10 @@ export default function Footer(): React.JSX.Element {
 			<hr className="footer-divider" />
 
 			<section className="lists">
-				<List model="institutional" />
-				<List model="help" />
-				<List model="sales center" />
-				<List model="relationship center" />
+				<List title="Institucional" model="institutional" />
+				<List title="Ajuda" model="help" />
+				<List title="Central de Vendas" model="salesCenter" />
+				<List title="Central de Relacionamento" model="relationshipCenter" />
 
 				<aside className="social-medias">
 					<SocialMedia icon={Icon.Facebook} />

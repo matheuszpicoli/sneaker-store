@@ -7,7 +7,7 @@ import React from "react"
 import Image, { StaticImageData } from "next/image"
 
 //- Sneakers
-import { highlightSneakers } from "../sneakers/sneakers"
+import { highlightSneakers } from "../api/sneakers"
 
 //- Swiper
 import "swiper/css"

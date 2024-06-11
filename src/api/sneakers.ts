@@ -15,7 +15,7 @@ type Category = {
 	shoeLace: typeof filter.shoeLace[keyof typeof filter.shoeLace]
 }
 
-type SneakerDetails = {
+export type SneakerDetails = {
 	image: StaticImageData
 	model: string
 	price: number
