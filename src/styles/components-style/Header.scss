@@ -5,26 +5,26 @@
 	cursor: default;
 	display: flex;
 	flex-direction: row;
+	font-size: 1rem;
 	height: $headerHeight;
 	justify-content: space-between;
 
 	.logo-area {
+		@include transition(150ms);
 		cursor: pointer;
 		display: inherit;
-
-		.logo-icon {
-			@include iconSize;
-			display: inline;
-			margin: $spacing;
-			vertical-align: middle;
-		}
+		margin: $spacing;
 
 		.logo-title {
-			letter-spacing: -1px;
+			letter-spacing: -1.5px;
 
 			.emphasis-title-font {
 				font-family: "RethinkSans Extra Bold", sans-serif;
 			}
+		}
+
+		&:active {
+			opacity: .5;
 		}
 	}
 
@@ -48,7 +48,7 @@
 				@include transition(300ms);
 
 				&:hover {
-					opacity: .3;
+					opacity: .5;
 				}
 
 				&:active {
@@ -58,24 +58,35 @@
 		}
 	}
 
-	.filter-area {
+	.icons-area {
 		display: inherit;
-		margin: $spacing;
 
-		.filter-icon {
-			@include iconSize;
+		:where(.favorite, .filter) {
 			@include transition(300ms);
 			cursor: pointer;
-			display: inline;
-			vertical-align: middle;
+
+			:where(.favorite-icon, .filter-icon) {
+				@include iconSize;
+				cursor: pointer;
+				vertical-align: bottom;
+
+				~ .icon-description {
+					margin: 0 2.5px;
+					position: relative;
+				}
+			}
 
 			&:hover {
-				opacity: .3;
+				opacity: .5;
 			}
 
 			&:active {
 				opacity: 1;
 			}
+		}
+
+		.filter {
+			margin: $spacing;
 		}
 	}
 }

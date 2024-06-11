@@ -1,0 +1,78 @@
+.footer-divider {
+	margin: 1em 0;
+}
+
+.additional-information {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	.additional-information-item {
+		.additional-information-icon {
+			@include iconSize;
+			margin: $spacing;
+			vertical-align: middle;
+		}
+
+		.additional-information-text-title {
+			display: inline;
+			font-family: "RethinkSans Bold", sans-serif;
+		}
+
+		.additional-information-text-subtitle {
+			display: block;
+			font-size: .7em;
+			text-align: right;
+		}
+	}
+}
+
+.lists {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+	.list {
+		.list-title {
+			font-family: "RethinkSans Bold", sans-serif;
+		}
+
+		.list-items {
+			list-style: none;
+
+			.list-item {
+				cursor: pointer;
+				font-size: .7em;
+				margin: 5px 0;
+
+				&:hover {
+					text-decoration: underline;
+				}
+
+				&:active {
+					font-family: "RethinkSans Bold", sans-serif;
+				}
+			}
+		}
+	}
+
+	.social-medias {
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+
+		.social-media {
+			@include iconSize;
+			@include transition(300ms);
+			cursor: pointer;
+
+			&:hover {
+				opacity: .5;
+			}
+
+			&:active {
+				opacity: 1;
+			}
+		}
+	}
+}

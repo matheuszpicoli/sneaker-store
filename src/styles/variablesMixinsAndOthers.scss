@@ -8,12 +8,12 @@ $masculineColor: #1642b2;
 $orange: #ff9900;
 $spacing: 0 1em;
 $teensColor: #880000;
-$white: #f6f6f6;
+$white: #bababa;
 
 //- Mixins
 @mixin iconSize {
-	height: 2em;
-	width: 2em;
+	height: 1.5em;
+	width: 1.5em;
 }
 
 @mixin sticky($stickyValue) {

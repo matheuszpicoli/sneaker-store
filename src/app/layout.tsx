@@ -4,9 +4,6 @@ import React from "react"
 //- Next
 import type { Metadata } from "next"
 
-//- Components
-import Header from "@/components/Header"
-
 export const metadata: Metadata = {
 	authors: {
 		name: "Matheus Zanela Picoli",
@@ -25,12 +22,7 @@ export function RootLayout<T extends RootLayoutProps>(props: Readonly<T>): React
 	return (
 		<html lang="pt-br">
 			<body>
-				<header>
-					<Header />
-				</header>
-				<main>
-					{props.children}
-				</main>
+				<main>{props.children}</main>
 			</body>
 		</html>
 	)

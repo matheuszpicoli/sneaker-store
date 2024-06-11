@@ -8,3 +8,12 @@ header {
 body {
 	background-color: $white;
 }
+
+footer {
+	background: transparent;
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	z-index: 10;
+}

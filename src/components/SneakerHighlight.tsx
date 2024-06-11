@@ -21,7 +21,7 @@ register()
 export default function SneakerHighlight(): React.JSX.Element {
 	return (
 		<React.Fragment>
-			<h2 className="highlight-subtitle">Diversas opções para você escolher</h2>
+			<h2 className="highlight-subtitle">Diversas opções para você escolher...</h2>
 			<aside className="sneaker-highlight">
 				<Swiper
 					modules={[
@@ -35,7 +35,7 @@ export default function SneakerHighlight(): React.JSX.Element {
 					autoplay={true}
 					navigation
 				>
-					{highlightSneakers.map((sneaker: StaticImageData, index: number) => (
+					{highlightSneakers.map((sneaker, index) => (
 						<SwiperSlide key={index}>
 							<Image
 								className="highlight-photo"
