@@ -50,17 +50,8 @@ export default function Header(): React.JSX.Element {
 					</a>
 				</div>
 			</div>
-			<div className="search-area">
-				{/* Mexer depois */}
-				<label className="search-label" htmlFor="search-input">
-					<Icon.Filter className="search-icon" />
-				</label>
-				<input
-					id="search-input"
-					type="search"
-					name="search-input"
-					placeholder="Filtrar"
-				/>
+			<div className="filter-area">
+				<Icon.Filter className="filter-icon" />
 			</div>
 		</nav>
 	)

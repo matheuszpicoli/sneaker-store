@@ -58,33 +58,11 @@
 		}
 	}
 
-	.search-area {
+	.filter-area {
 		display: inherit;
 		margin: $spacing;
 
-		.search-label {
-			margin: 0;
-			padding: 0;
-		}
-
-		#search-input {
-			@include transition(300ms);
-			background-color: $white;
-			border-radius: 0.15em;
-			border: .5px solid $fullBlack;
-			outline: none;
-			padding: 5px;
-
-			&:hover {
-				background-color: #ffffff;
-			}
-
-			&:active {
-				opacity: .9;
-			}
-		}
-
-		.search-icon {
+		.filter-icon {
 			@include iconSize;
 			@include transition(300ms);
 			cursor: pointer;
