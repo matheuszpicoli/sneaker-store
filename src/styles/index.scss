@@ -6,9 +6,11 @@
 
 //. Style files
 @import "./tagLayout.scss";
+@import "./extras.scss";
 
 //. Components
 @import "./components-style/Header.scss";
+@import "./components-style/FilterScreen.scss";
 @import "./components-style/SneakerHighlight.scss";
 @import "./components-style/Section.scss";
 @import "./components-style/Footer.scss";

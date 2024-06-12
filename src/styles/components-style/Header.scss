@@ -8,6 +8,7 @@
 	font-size: 1rem;
 	height: $headerHeight;
 	justify-content: space-between;
+	pointer-events: auto;
 
 	.logo-area {
 		@include transition(150ms);
@@ -62,26 +63,29 @@
 		display: inherit;
 
 		:where(.favorite, .filter) {
-			@include transition(300ms);
 			cursor: pointer;
 
-			:where(.favorite-icon, .filter-icon) {
-				@include iconSize;
-				cursor: pointer;
-				vertical-align: bottom;
+			.icon-area {
+				@include transition(300ms);
 
-				~ .icon-description {
-					margin: 0 2.5px;
-					position: relative;
+				:where(.favorite-icon, .filter-icon) {
+					@include iconSize;
+					cursor: pointer;
+					vertical-align: bottom;
+
+					~ .icon-description {
+						margin: 0 2.5px;
+						position: relative;
+					}
 				}
-			}
 
-			&:hover {
-				opacity: .5;
-			}
+				&:hover {
+					opacity: .5;
+				}
 
-			&:active {
-				opacity: 1;
+				&:active {
+					opacity: 1;
+				}
 			}
 		}
 

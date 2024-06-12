@@ -1,13 +1,22 @@
 "use client"
 
 //- React
-import React, { useState } from "react"
+import React, { useState, useLayoutEffect } from "react"
 
 //- Icons
 import * as Icon from "../icons/icons"
 
+//- Components
+import FilterSceen from "./FilterSceen"
+
 export default function Header(): React.JSX.Element {
 	const [filtering, setFiltering] = useState<boolean>(false)
+
+	useLayoutEffect(() => {
+		filtering ?
+			document.body.classList.add("no-events") :
+			document.body.classList.remove("no-events")
+	}, [filtering])
 
 	function navigateTo(element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
 		event.preventDefault()
@@ -54,22 +63,25 @@ export default function Header(): React.JSX.Element {
 				</div>
 				<div className="icons-area">
 					<section className="favorite">
-						<Icon.Favorite className="favorite-icon" />
-						<span className="icon-description">Favoritos</span>
+						<div className="icon-area">
+							<Icon.Favorite className="favorite-icon" />
+							<span className="icon-description">Favoritos</span>
+						</div>
 					</section>
-					<section
-						className="filter"
-						onClick={(): void => setFiltering(toggleState => !toggleState)}
-					>
+					<section className="filter">
 						{!filtering ? (
-							<React.Fragment>
+							<div className="icon-area" onClick={(): void => setFiltering(true)}>
 								<Icon.Filter className="filter-icon" />
 								<span className="icon-description">Filtro</span>
-							</React.Fragment>
+							</div>
 						) : (
 							<React.Fragment>
-								<Icon.Unfilter className="filter-icon" />
-								<span className="icon-description">Limpar</span>
+								<div className="icon-area" onClick={(): void => setFiltering(false)}>
+									<Icon.Unfilter className="filter-icon" />
+									<span className="icon-description">Esconder</span>
+								</div>
+
+								<FilterSceen buttonAction={(): void => setFiltering(false)} />
 							</React.Fragment>
 						)}
 					</section>
