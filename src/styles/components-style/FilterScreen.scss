@@ -54,21 +54,24 @@
 		.filter-options {
 			display: flex;
 			flex-direction: column;
-			pointer-events: stroke;
 
-			.filter-label {
-				font-size: .8em;
+			.filter-option {
+				align-items: center;
+				display: flex;
 				margin-bottom: 1em;
-			}
+				pointer-events: stroke;
 
-			.filter-radio {
-				accent-color: $orange;
-				height: 1.2em;
-				width: 1.2em;
-			}
+				.filter-radio {
+					accent-color: $orange;
+					cursor: pointer;
+					height: 1.2em;
+					margin-right: 0.5em;
+					width: 1.2em;
+				}
 
-			:where(.filter-radio, .filter-label) {
-				cursor: pointer;
+				.filter-label {
+					font-size: .8em;
+				}
 			}
 		}
 	}

@@ -1,9 +1,6 @@
 //- React
 import React from "react"
 
-//- Icons
-import * as Icon from "../icons/icons"
-
 interface FilterProps {
 	category: string,
 	children: React.ReactNode
@@ -28,7 +25,7 @@ interface RadioProps {
 
 function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 	return (
-		<React.Fragment>
+		<div className="filter-option">
 			<input
 				type="radio"
 				className="filter-radio"
@@ -41,7 +38,7 @@ function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 			>
 				{props.label}
 			</label>
-		</React.Fragment>
+		</div>
 	)
 }
 

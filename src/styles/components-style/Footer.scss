@@ -59,7 +59,7 @@
 	.social-medias {
 		display: flex;
 		flex-direction: column;
-		justify-content: end;
+		justify-content: flex-end;
 
 		.social-media {
 			@include iconSize;
