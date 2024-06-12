@@ -18,6 +18,18 @@ export default function Header(): React.JSX.Element {
 			document.body.classList.remove("no-events")
 	}, [filtering])
 
+	useLayoutEffect(() => {
+		if (filtering) {
+			const handleKeyDown = (event: KeyboardEvent): void => {
+				if (event.key === "Escape") setFiltering(false)
+			}
+
+			window.addEventListener("keydown", handleKeyDown)
+
+			return () => window.removeEventListener("keydown", handleKeyDown)
+		}
+	}, [filtering, setFiltering])
+
 	function navigateTo(element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
 		event.preventDefault()
 
