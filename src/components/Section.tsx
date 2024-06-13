@@ -4,12 +4,9 @@ import React from "react"
 //- Next
 import Image from "next/image"
 
-//- Types
-import { masculineSneakers, SneakerDetails } from "../api/sneakers"
-
 //- API
 import * as sneakers from "@/api/sneakers"
-import { filter } from "@/api/filter"
+import type { SneakerDetails } from "@/api/sneakers"
 
 type Month = {
 	january: 1,
@@ -101,21 +98,27 @@ function SectionModel<T extends SectionModelProps>(props: T): React.JSX.Element 
 
 interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"
-	filteredSneakers?: SneakerDetails[]
+	filter: SneakerDetails[]
 }
 
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
-	const filterSneakersInTheirRespectiveSection = (sneaker: SneakerDetails): boolean => sneaker.section === props.reference
+	const season: Season | undefined = getSeason()
+	let sneakersToDisplay: SneakerDetails[] = []
 
-	const sneakersToDisplay =
-		props.filteredSneakers
-			? props.filteredSneakers.filter(filterSneakersInTheirRespectiveSection)
-			: {
-				masculine: sneakers.masculineSneakers,
-				feminine: sneakers.feminineSneakers,
-				teens: sneakers.teensSneakers,
-				collections: sneakers.collectionSneakers[getSeason() as keyof typeof sneakers.collectionSneakers] || [],
-			}[props.reference]
+	if (props.reference === "collections" && season) {
+		sneakersToDisplay = sneakers.collectionSneakers[season]
+	} else {
+		sneakersToDisplay = {
+			masculine: sneakers.masculineSneakers,
+			feminine: sneakers.feminineSneakers,
+			teens: sneakers.teensSneakers,
+			collections: season ? sneakers.collectionSneakers[season] : [],
+		}[props.reference]
+	}
+
+	if (props.filter) {
+		sneakersToDisplay = sneakersToDisplay.filter(sneaker => props.filter.includes(sneaker));
+	}
 
 	return (
 		<React.Fragment>

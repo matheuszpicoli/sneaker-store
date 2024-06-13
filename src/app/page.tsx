@@ -7,10 +7,9 @@ import React, { useState } from "react"
 import Head from "next/head"
 
 //- Styles
-import "../styles/index.scss"
+import "@/styles/index.scss"
 
-//- API
-import * as sneakers from "@/api/sneakers"
+//- Types
 import type { SneakerDetails } from "@/api/sneakers"
 
 //- Components
@@ -20,9 +19,9 @@ import Section from "@/components/Section"
 import Footer from "@/components/Footer"
 
 export default function MPSneakers(): React.JSX.Element {
-	const [filteredSneakers, setFilteredSneakers] = useState<sneakers.SneakerDetails[]>([])
+	const [sneakersThatHaveBeenFiltered, setsneakersThatHaveBeenFiltered] = useState<SneakerDetails[]>([])
 
-	const handleFilterApplied = (sneakers: SneakerDetails[]) => setFilteredSneakers(sneakers)
+	const handleFilterApplied = (sneakers: SneakerDetails[]) => setsneakersThatHaveBeenFiltered(sneakers)
 
 	return (
 		<React.Fragment>
@@ -31,10 +30,10 @@ export default function MPSneakers(): React.JSX.Element {
 			</Head>
 			<Header filter={handleFilterApplied} />
 			<SneakerHighlight />
-			<Section reference="masculine" filteredSneakers={filteredSneakers} />
-			<Section reference="feminine" filteredSneakers={filteredSneakers} />
-			<Section reference="teens" filteredSneakers={filteredSneakers} />
-			<Section reference="collections" filteredSneakers={filteredSneakers} />
+			<Section reference="masculine" filter={sneakersThatHaveBeenFiltered} />
+			<Section reference="feminine" filter={sneakersThatHaveBeenFiltered} />
+			<Section reference="teens" filter={sneakersThatHaveBeenFiltered} />
+			<Section reference="collections" filter={sneakersThatHaveBeenFiltered} />
 			<Footer />
 		</React.Fragment>
 	)
