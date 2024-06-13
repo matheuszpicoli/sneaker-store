@@ -1,11 +1,13 @@
 "use client"
 
 //- React
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 //- API
-import { filter } from "@/api/filter"
+import * as sneakers from "@/api/sneakers"
 import type { Category } from "@/api/sneakers"
+
+import { filter } from "@/api/filter"
 
 interface FilterProps {
 	category: string,
@@ -80,12 +82,41 @@ export default function FilterScreen(): React.JSX.Element {
 		color: null,
 		material: null
 	})
+	const [filteredSneakers, setFilteredSneakers] = useState<sneakers.SneakerDetails[]>([])
+
+	useEffect(() => {
+		console.log(filteredSneakers)
+	}, [filteredSneakers])
 
 	const handleRadioChange = (id: keyof Category, value: string) => {
 		setSelectedFilter(previousFilter => ({
 			...previousFilter,
 			[id]: value,
 		}))
+	}
+
+	const filterSneakers = () => {
+		const allSneakers = [
+			...sneakers.masculineSneakers,
+			...sneakers.feminineSneakers,
+			...sneakers.teensSneakers,
+			...sneakers.collectionSneakers.autumn,
+			...sneakers.collectionSneakers.spring,
+			...sneakers.collectionSneakers.summer,
+			...sneakers.collectionSneakers.winter
+		]
+
+		const sneakersInTheFilter = allSneakers.filter(sneaker => {
+			return Object.entries(selectedFilter).every(
+				([key, value]) => {
+					if (value === null) return true
+
+					const categoryKey = key as keyof Category
+					return sneaker.category[categoryKey] === value
+				})
+		})
+
+		setFilteredSneakers(sneakersInTheFilter)
 	}
 
 	return (
@@ -123,7 +154,7 @@ export default function FilterScreen(): React.JSX.Element {
 
 			<button
 				className="apply-filter"
-				onClick={(): void => console.log(selectedFilter)}
+				onClick={filterSneakers}
 			>
 				Aplicar filtro
 			</button>
