@@ -5,7 +5,7 @@ import React from "react"
 import Image from "next/image"
 
 //- Types
-import { SneakerDetails } from "../api/sneakers"
+import { masculineSneakers, SneakerDetails } from "../api/sneakers"
 
 //- Sneakers
 import {
@@ -105,9 +105,17 @@ function SectionModel<T extends SectionModelProps>(props: T): React.JSX.Element 
 
 interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"
+	filteredSneakers?: SneakerDetails[]
 }
 
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
+	const sneakersToDisplay = props.filteredSneakers || {
+		masculine,
+		feminine,
+		teens,
+		collections: collections[getSeason() as keyof typeof collections] || []
+	}[props.reference]
+
 	return (
 		<React.Fragment>
 			{props.reference === "masculine" && (
@@ -115,7 +123,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					id="masculine"
 					title="Masculino"
 					text={aboutTheSection.concat("os homens.")}
-					sneakers={masculine}
+					sneakers={sneakersToDisplay}
 				/>
 			)}
 			{props.reference === "feminine" && (
@@ -123,7 +131,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					id="feminine"
 					title="Feminino"
 					text={aboutTheSection.concat("as mulheres.")}
-					sneakers={feminine}
+					sneakers={sneakersToDisplay}
 				/>
 			)}
 			{props.reference === "teens" && (
@@ -131,7 +139,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 					id="teens"
 					title="Teens"
 					text={aboutTheSection.concat("os jovens.")}
-					sneakers={teens}
+					sneakers={sneakersToDisplay}
 				/>
 			)}
 			{props.reference === "collections" && (
@@ -141,7 +149,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							id="collections"
 							title="Coleções de Verão"
 							text={aboutTheSection.concat("o verão.")}
-							sneakers={collections.summer}
+							sneakers={sneakersToDisplay}
 						/>
 					)}
 					{getSeason() === "autumn" && (
@@ -149,7 +157,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							id="collections"
 							title="Coleções de Outono"
 							text={aboutTheSection.concat("o outono.")}
-							sneakers={collections.autumn}
+							sneakers={sneakersToDisplay}
 						/>
 					)}
 					{getSeason() === "winter" && (
@@ -157,7 +165,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							id="collections"
 							title="Coleções de Inverno"
 							text={aboutTheSection.concat("o inverno.")}
-							sneakers={collections.winter}
+							sneakers={sneakersToDisplay}
 						/>
 					)}
 					{getSeason() === "spring" && (
@@ -165,7 +173,7 @@ export default function Section<T extends SectionProps>(props: T): React.JSX.Ele
 							id="collections"
 							title="Coleções de Primavera"
 							text={aboutTheSection.concat("a primavera.")}
-							sneakers={collections.spring}
+							sneakers={sneakersToDisplay}
 						/>
 					)}
 					{getSeason() === undefined && (

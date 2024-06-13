@@ -9,7 +9,14 @@ import * as Icon from "../icons/icons"
 //- Components
 import FilterSceen from "./FilterSceen"
 
-export default function Header(): React.JSX.Element {
+//- API
+import * as sneakers from "@/api/sneakers"
+
+interface HeaderProps {
+	filter: (filter: sneakers.SneakerDetails[]) => void
+}
+
+export default function Header<T extends HeaderProps>(props: T): React.JSX.Element {
 	const [filtering, setFiltering] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
@@ -93,7 +100,7 @@ export default function Header(): React.JSX.Element {
 									<span className="icon-description">Esconder</span>
 								</div>
 
-								<FilterSceen />
+								<FilterSceen onFilterApplied={props.filter} />
 							</React.Fragment>
 						)}
 					</section>

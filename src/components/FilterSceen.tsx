@@ -1,11 +1,11 @@
 "use client"
 
 //- React
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 //- API
 import * as sneakers from "@/api/sneakers"
-import type { Category } from "@/api/sneakers"
+import type { Category, SneakerDetails } from "@/api/sneakers"
 
 import { filter } from "@/api/filter"
 
@@ -73,7 +73,11 @@ function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 	)
 }
 
-export default function FilterScreen(): React.JSX.Element {
+interface FilterScreenProps {
+	onFilterApplied: (filter: SneakerDetails[]) => void
+}
+
+export default function FilterScreen<T extends FilterScreenProps>(props: T): React.JSX.Element {
 	const [selectedFilter, setSelectedFilter] = useState<Category>({
 		sex: null,
 		design: null,
@@ -83,10 +87,6 @@ export default function FilterScreen(): React.JSX.Element {
 		material: null
 	})
 	const [filteredSneakers, setFilteredSneakers] = useState<sneakers.SneakerDetails[]>([])
-
-	useEffect(() => {
-		console.log(filteredSneakers)
-	}, [filteredSneakers])
 
 	const handleRadioChange = (id: keyof Category, value: string) => {
 		setSelectedFilter(previousFilter => ({
@@ -117,6 +117,7 @@ export default function FilterScreen(): React.JSX.Element {
 		})
 
 		setFilteredSneakers(sneakersInTheFilter)
+		props.onFilterApplied(sneakersInTheFilter)
 	}
 
 	return (
