@@ -1,5 +1,11 @@
+"use client"
+
 //- React
-import React from "react"
+import React, { useState } from "react"
+
+//- API
+import { filter } from "@/api/filter"
+import type { Category } from "@/api/sneakers"
 
 interface FilterProps {
 	category: string,
@@ -17,13 +23,35 @@ function Filter<T extends FilterProps>(props: T): React.JSX.Element {
 	)
 }
 
+type ValidLabels = "Unissex" | "Masculino" | "Feminino" | "Liso" | "Estampado" | "Baixo" | "Médio" | "Alto" | "Com cadarço" | "Sem cadarço" | "Normal" | "Colorido" | "Padrão" | "Premium"
+
 interface RadioProps {
-	label: string,
-	id: "sex" | "design" | "ankleHeight" | "shoeLace" | "color" | "material"
+	label: ValidLabels
+	id: keyof Category
 	index: number
+	onChange: (id: keyof Category, value: string) => void
 }
 
 function Radio<T extends RadioProps>(props: T): React.JSX.Element {
+	const labelToApiValue: { [key in ValidLabels]: string } = {
+		"Unissex": filter.sex.unisex,
+		"Masculino": filter.sex.masculine,
+		"Feminino": filter.sex.feminine,
+		"Liso": filter.design.straight,
+		"Estampado": filter.design.patterned,
+		"Baixo": filter.ankleHeight.low,
+		"Médio": filter.ankleHeight.medium,
+		"Alto": filter.ankleHeight.high,
+		"Com cadarço": filter.shoeLace.withLaces,
+		"Sem cadarço": filter.shoeLace.withoutLaces,
+		"Normal": filter.color.standard,
+		"Colorido": filter.color.colorful,
+		"Padrão": filter.material.standard,
+		"Premium": filter.material.premium
+	}
+
+	const handleChange = (): void => props.onChange(props.id, labelToApiValue[props.label])
+
 	return (
 		<div className="filter-option">
 			<input
@@ -31,6 +59,7 @@ function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 				className="filter-radio"
 				name={props.id}
 				id={props.id.concat(props.index.toString())}
+				onChange={handleChange}
 			/>
 			<label
 				htmlFor={props.id.concat(props.index.toString())}
@@ -42,11 +71,23 @@ function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 	)
 }
 
-interface FilterScreenProps {
-	buttonAction: () => void
-}
+export default function FilterScreen(): React.JSX.Element {
+	const [selectedFilter, setSelectedFilter] = useState<Category>({
+		sex: null,
+		design: null,
+		ankleHeight: null,
+		shoeLace: null,
+		color: null,
+		material: null
+	})
 
-export default function FilterSceen<T extends FilterScreenProps>(props: T): React.JSX.Element {
+	const handleRadioChange = (id: keyof Category, value: string) => {
+		setSelectedFilter(previousFilter => ({
+			...previousFilter,
+			[id]: value,
+		}))
+	}
+
 	return (
 		<aside className="filter-screen">
 			<strong className="help-text">
@@ -54,35 +95,35 @@ export default function FilterSceen<T extends FilterScreenProps>(props: T): Reac
 			</strong>
 
 			<Filter category="Sexo">
-				<Radio label="Unissex" id="sex" index={1} />
-				<Radio label="Masculino" id="sex" index={2} />
-				<Radio label="Feminino" id="sex" index={3} />
+				<Radio label="Unissex" id="sex" index={1} onChange={handleRadioChange} />
+				<Radio label="Masculino" id="sex" index={2} onChange={handleRadioChange} />
+				<Radio label="Feminino" id="sex" index={3} onChange={handleRadioChange} />
 			</Filter>
 			<Filter category="Design">
-				<Radio label="Liso" id="design" index={1} />
-				<Radio label="Estampado" id="design" index={2} />
+				<Radio label="Liso" id="design" index={1} onChange={handleRadioChange} />
+				<Radio label="Estampado" id="design" index={2} onChange={handleRadioChange} />
 			</Filter>
 			<Filter category="Altura do Tornozelo">
-				<Radio label="Baixo" id="ankleHeight" index={1} />
-				<Radio label="Médio" id="ankleHeight" index={2} />
-				<Radio label="Alto" id="ankleHeight" index={3} />
+				<Radio label="Baixo" id="ankleHeight" index={1} onChange={handleRadioChange} />
+				<Radio label="Médio" id="ankleHeight" index={2} onChange={handleRadioChange} />
+				<Radio label="Alto" id="ankleHeight" index={3} onChange={handleRadioChange} />
 			</Filter>
 			<Filter category="Cadarços">
-				<Radio label="Com cadarço" id="shoeLace" index={1} />
-				<Radio label="Sem cadarço" id="shoeLace" index={2} />
+				<Radio label="Com cadarço" id="shoeLace" index={1} onChange={handleRadioChange} />
+				<Radio label="Sem cadarço" id="shoeLace" index={2} onChange={handleRadioChange} />
 			</Filter>
 			<Filter category="Cor">
-				<Radio label="Padrão" id="color" index={1} />
-				<Radio label="Colorido" id="color" index={2} />
+				<Radio label="Normal" id="color" index={1} onChange={handleRadioChange} />
+				<Radio label="Colorido" id="color" index={2} onChange={handleRadioChange} />
 			</Filter>
 			<Filter category="Material">
-				<Radio label="Padrão" id="material" index={1} />
-				<Radio label="Premium" id="material" index={2} />
+				<Radio label="Padrão" id="material" index={1} onChange={handleRadioChange} />
+				<Radio label="Premium" id="material" index={2} onChange={handleRadioChange} />
 			</Filter>
 
 			<button
 				className="apply-filter"
-				onClick={props.buttonAction}
+				onClick={(): void => console.log(selectedFilter)}
 			>
 				Aplicar filtro
 			</button>

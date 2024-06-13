@@ -4,15 +4,15 @@ import type { StaticImageData } from "next/image"
 //- Filter
 import { filter } from "./filter"
 
-type Season = "summer" | "autumn" | "winter" | "spring"
+export type Season = "summer" | "autumn" | "winter" | "spring"
 
-type Category = {
-	ankleHeight: typeof filter.ankleHeight[keyof typeof filter.ankleHeight]
-	color: typeof filter.color[keyof typeof filter.color]
-	design: typeof filter.design[keyof typeof filter.design]
-	material: typeof filter.material[keyof typeof filter.material]
-	sex: typeof filter.sex[keyof typeof filter.sex]
-	shoeLace: typeof filter.shoeLace[keyof typeof filter.shoeLace]
+export type Category = {
+	ankleHeight: typeof filter.ankleHeight[keyof typeof filter.ankleHeight] | null
+	color: typeof filter.color[keyof typeof filter.color] | null
+	design: typeof filter.design[keyof typeof filter.design] | null
+	material: typeof filter.material[keyof typeof filter.material] | null
+	sex: typeof filter.sex[keyof typeof filter.sex] | null
+	shoeLace: typeof filter.shoeLace[keyof typeof filter.shoeLace] | null
 }
 
 export type SneakerDetails = {
@@ -92,9 +92,7 @@ import highlight8 from "./images/sneaker highlight/highlight8.jpg"
 export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 	summer: [
 		{
-			image: summer1,
-			model: "Knee-High",
-			price: 179.99,
+			image: summer1, model: "Knee-High", price: 179.99,
 			category: {
 				ankleHeight: filter.ankleHeight.high,
 				color: filter.color.standard,
@@ -105,9 +103,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: summer2,
-			model: "Alcantara",
-			price: 299.99,
+			image: summer2, model: "Alcantara", price: 299.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.colorful,
@@ -118,9 +114,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: summer3,
-			model: "Indigenous",
-			price: 149.99,
+			image: summer3, model: "Indigenous", price: 149.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.colorful,
@@ -131,9 +125,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: summer4,
-			model: "Shoeless Grandpa",
-			price: 119.99,
+			image: summer4, model: "Shoeless Grandpa", price: 119.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -146,9 +138,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 	],
 	autumn: [
 		{
-			image: autumn1,
-			model: "Free print",
-			price: 149.99,
+			image: autumn1, model: "Free print", price: 149.99,
 			category: {
 				ankleHeight: filter.ankleHeight.medium,
 				color: filter.color.colorful,
@@ -159,9 +149,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: autumn2,
-			model: "All the time",
-			price: 139.99,
+			image: autumn2, model: "All the time", price: 139.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -172,9 +160,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: autumn3,
-			model: "Tribal",
-			price: 109.99,
+			image: autumn3, model: "Tribal", price: 109.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -185,9 +171,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: autumn4,
-			model: "Perforated",
-			price: 99.99,
+			image: autumn4, model: "Perforated", price: 99.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -200,9 +184,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 	],
 	winter: [
 		{
-			image: winter1,
-			model: "High top crochet",
-			price: 159.99,
+			image: winter1, model: "High top crochet", price: 159.99,
 			category: {
 				ankleHeight: filter.ankleHeight.high,
 				color: filter.color.colorful,
@@ -213,9 +195,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: winter2,
-			model: "Artisanal chocolate",
-			price: 139.99,
+			image: winter2, model: "Artisanal chocolate", price: 139.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -226,9 +206,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: winter3,
-			model: "Tribal slip-on",
-			price: 179.99,
+			image: winter3, model: "Tribal slip-on", price: 179.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -239,9 +217,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: winter4,
-			model: "Bold",
-			price: 209.99,
+			image: winter4, model: "Bold", price: 209.99,
 			category: {
 				ankleHeight: filter.ankleHeight.medium,
 				color: filter.color.standard,
@@ -254,9 +230,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 	],
 	spring: [
 		{
-			image: spring1,
-			model: "Graffiti wall",
-			price: 109.99,
+			image: spring1, model: "Graffiti wall", price: 109.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.colorful,
@@ -267,9 +241,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: spring2,
-			model: "Colored beige",
-			price: 99.99,
+			image: spring2, model: "Colored beige", price: 99.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.colorful,
@@ -280,9 +252,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: spring3,
-			model: "Magazine cover",
-			price: 179.99,
+			image: spring3, model: "Magazine cover", price: 179.99,
 			category: {
 				ankleHeight: filter.ankleHeight.medium,
 				color: filter.color.standard,
@@ -293,9 +263,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 			}
 		},
 		{
-			image: spring4,
-			model: "No rendering",
-			price: 119.99,
+			image: spring4, model: "No rendering", price: 119.99,
 			category: {
 				ankleHeight: filter.ankleHeight.low,
 				color: filter.color.standard,
@@ -310,9 +278,7 @@ export const collectionSneakers: { [season in Season]: SneakerDetails[] } = {
 
 export const feminineSneakers: SneakerDetails[] = [
 	{
-		image: femme1,
-		model: "Pink",
-		price: 159.99,
+		image: femme1, model: "Pink", price: 159.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -323,9 +289,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme2,
-		model: "Dear",
-		price: 109.99,
+		image: femme2, model: "Dear", price: 109.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -336,9 +300,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme3,
-		model: "Empowered",
-		price: 239.99,
+		image: femme3, model: "Empowered", price: 239.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -349,9 +311,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme4,
-		model: "Anteater face",
-		price: 179.99,
+		image: femme4, model: "Anteater face", price: 179.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -362,9 +322,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme5,
-		model: "Abstract",
-		price: 119.99,
+		image: femme5, model: "Abstract", price: 119.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.colorful,
@@ -375,9 +333,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme6,
-		model: "Little girl",
-		price: 159.99,
+		image: femme6, model: "Little girl", price: 159.99,
 		category: {
 			ankleHeight: filter.ankleHeight.high,
 			color: filter.color.colorful,
@@ -388,9 +344,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme7,
-		model: "Simple woman",
-		price: 139.99,
+		image: femme7, model: "Simple woman", price: 139.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -401,9 +355,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme8,
-		model: "Flowery",
-		price: 179.99,
+		image: femme8, model: "Flowery", price: 179.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.colorful,
@@ -414,9 +366,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme9,
-		model: "Runner 3",
-		price: 249.99,
+		image: femme9, model: "Runner 3", price: 249.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.colorful,
@@ -427,9 +377,7 @@ export const feminineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: femme10,
-		model: "Whatever",
-		price: 99.99,
+		image: femme10, model: "Whatever", price: 99.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -443,9 +391,7 @@ export const feminineSneakers: SneakerDetails[] = [
 
 export const masculineSneakers: SneakerDetails[] = [
 	{
-		image: male1,
-		model: "Simple man",
-		price: 169.99,
+		image: male1, model: "Simple man", price: 169.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -456,9 +402,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male2,
-		model: "Fish scale",
-		price: 149.99,
+		image: male2, model: "Fish scale", price: 149.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -469,9 +413,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male3,
-		model: "Hurry",
-		price: 139.99,
+		image: male3, model: "Hurry", price: 139.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -482,9 +424,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male4,
-		model: "Neat",
-		price: 249.99,
+		image: male4, model: "Neat", price: 249.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -495,9 +435,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male5,
-		model: "Manager",
-		price: 189.99,
+		image: male5, model: "Manager", price: 189.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -508,9 +446,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male6,
-		model: "Basic modern",
-		price: 219.99,
+		image: male6, model: "Basic modern", price: 219.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -521,9 +457,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male7,
-		model: "Ready to work",
-		price: 99.99,
+		image: male7, model: "Ready to work", price: 99.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -534,9 +468,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male8,
-		model: "Gang",
-		price: 119.99,
+		image: male8, model: "Gang", price: 119.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.colorful,
@@ -547,9 +479,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male9,
-		model: "Tall black",
-		price: 229.99,
+		image: male9, model: "Tall black", price: 229.99,
 		category: {
 			ankleHeight: filter.ankleHeight.high,
 			color: filter.color.standard,
@@ -560,9 +490,7 @@ export const masculineSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: male10,
-		model: "Cattle owner",
-		price: 209.99,
+		image: male10, model: "Cattle owner", price: 209.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -576,9 +504,7 @@ export const masculineSneakers: SneakerDetails[] = [
 
 export const teensSneakers: SneakerDetails[] = [
 	{
-		image: teen1,
-		model: "Thick",
-		price: 239.99,
+		image: teen1, model: "Thick", price: 239.99,
 		category: {
 			ankleHeight: filter.ankleHeight.high,
 			color: filter.color.colorful,
@@ -589,9 +515,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen2,
-		model: "Stationer\"s",
-		price: 99.99,
+		image: teen2, model: "Stationer\"s", price: 99.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.colorful,
@@ -602,9 +526,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen3,
-		model: "Good luck",
-		price: 199.99,
+		image: teen3, model: "Good luck", price: 199.99,
 		category: {
 			ankleHeight: filter.ankleHeight.high,
 			color: filter.color.colorful,
@@ -615,9 +537,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen4,
-		model: "Color party",
-		price: 139.99,
+		image: teen4, model: "Color party", price: 139.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.colorful,
@@ -628,9 +548,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen5,
-		model: "Famous gray",
-		price: 209.99,
+		image: teen5, model: "Famous gray", price: 209.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -641,9 +559,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen6,
-		model: "Behaved",
-		price: 179.99,
+		image: teen6, model: "Behaved", price: 179.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.colorful,
@@ -654,9 +570,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen7,
-		model: "Criminal hive",
-		price: 219.99,
+		image: teen7, model: "Criminal hive", price: 219.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -667,9 +581,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen8,
-		model: "Like a spider",
-		price: 159.99,
+		image: teen8, model: "Like a spider", price: 159.99,
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.standard,
@@ -680,9 +592,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen9,
-		model: "Rainbow",
-		price: 109.99,
+		image: teen9, model: "Rainbow", price: 109.99,
 		category: {
 			ankleHeight: filter.ankleHeight.low,
 			color: filter.color.standard,
@@ -693,9 +603,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: teen10,
-		model: "Straight talk",
-		price: 119.99,
+		image: teen10, model: "Straight talk", price: 119.99,
 		category: {
 			ankleHeight: filter.ankleHeight.high,
 			color: filter.color.standard,

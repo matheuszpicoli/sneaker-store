@@ -93,7 +93,7 @@ export default function Header(): React.JSX.Element {
 									<span className="icon-description">Esconder</span>
 								</div>
 
-								<FilterSceen buttonAction={(): void => setFiltering(false)} />
+								<FilterSceen />
 							</React.Fragment>
 						)}
 					</section>
