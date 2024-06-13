@@ -7,13 +7,9 @@ import Image from "next/image"
 //- Types
 import { masculineSneakers, SneakerDetails } from "../api/sneakers"
 
-//- Sneakers
-import {
-	masculineSneakers as masculine,
-	feminineSneakers as feminine,
-	teensSneakers as teens,
-	collectionSneakers as collections
-} from "../api/sneakers"
+//- API
+import * as sneakers from "@/api/sneakers"
+import { filter } from "@/api/filter"
 
 type Month = {
 	january: 1,
@@ -109,12 +105,17 @@ interface SectionProps {
 }
 
 export default function Section<T extends SectionProps>(props: T): React.JSX.Element {
-	const sneakersToDisplay = props.filteredSneakers || {
-		masculine,
-		feminine,
-		teens,
-		collections: collections[getSeason() as keyof typeof collections] || []
-	}[props.reference]
+	const filterSneakersInTheirRespectiveSection = (sneaker: SneakerDetails): boolean => sneaker.section === props.reference
+
+	const sneakersToDisplay =
+		props.filteredSneakers
+			? props.filteredSneakers.filter(filterSneakersInTheirRespectiveSection)
+			: {
+				masculine: sneakers.masculineSneakers,
+				feminine: sneakers.feminineSneakers,
+				teens: sneakers.teensSneakers,
+				collections: sneakers.collectionSneakers[getSeason() as keyof typeof sneakers.collectionSneakers] || [],
+			}[props.reference]
 
 	return (
 		<React.Fragment>
