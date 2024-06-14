@@ -17,7 +17,7 @@ interface FilterProps {
 	children: React.ReactNode
 }
 
-function Filter<T extends FilterProps>(props: T): React.JSX.Element {
+function Filter(props: FilterProps): React.JSX.Element {
 	return (
 		<section className="filter-section">
 			<p className="filter-category">{props.category}</p>
@@ -37,7 +37,7 @@ interface RadioProps {
 	onChange: (id: keyof Category, value: string) => void
 }
 
-function Radio<T extends RadioProps>(props: T): React.JSX.Element {
+function Radio(props: RadioProps): React.JSX.Element {
 	const labelToApiValue: { [key in ValidLabels]: string } = {
 		"Unissex": filter.sex.unisex,
 		"Masculino": filter.sex.masculine,
@@ -55,43 +55,46 @@ function Radio<T extends RadioProps>(props: T): React.JSX.Element {
 		"Premium": filter.material.premium
 	}
 
-	const handleChange = (): void => props.onChange(props.id, labelToApiValue[props.label])
+	const handleChange = (): void => {
+		props.onChange(props.id, labelToApiValue[props.label])
+	}
+
+	const inputId = props.id.concat(props.index.toString())
 
 	return (
 		<div className="filter-option">
 			<input
 				type="radio"
 				className="filter-radio"
+				id={inputId}
 				name={props.id}
-				id={props.id.concat(props.index.toString())}
 				onChange={handleChange}
 			/>
-			<label
-				htmlFor={props.id.concat(props.index.toString())}
-				className="filter-label"
-			>
+			<label htmlFor={inputId} className="filter-label">
 				{props.label}
 			</label>
 		</div>
 	)
 }
 
+const applyText: string = "Aplicar filtro"
+const unapplyText: string = "Remover filtro"
+
+const initialFilterState: Category = {
+	ankleHeight: null,
+	color: null,
+	design: null,
+	material: null,
+	sex: null,
+	shoeLace: null
+}
+
 interface FilterScreenProps {
 	onFilterApplied: (filter: SneakerDetails[]) => void
 }
 
-export default function FilterScreen<T extends FilterScreenProps>(props: T): React.JSX.Element {
-	const applyText: string = "Aplicar filtro"
-	const unapplyText: string = "Remover filtro"
-
-	const [selectedFilter, setSelectedFilter] = useState<Category>({
-		sex: null,
-		design: null,
-		ankleHeight: null,
-		shoeLace: null,
-		color: null,
-		material: null
-	})
+export default function FilterScreen(props: FilterScreenProps): React.JSX.Element {
+	const [selectedFilter, setSelectedFilter] = useState<Category>(initialFilterState)
 	const [filteredSneakers, setFilteredSneakers] = useState<SneakerDetails[]>([])
 	const [actionButtonText, setActionButtonText] = useState<string>(applyText)
 
@@ -100,9 +103,11 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 			...previousFilter,
 			[id]: value,
 		}))
+
+		if (actionButtonText === unapplyText) setActionButtonText(applyText)
 	}
 
-	const filterSneakers = () => {
+	const filterSneakers = (): void => {
 		const allSneakers = [
 			...sneakers.masculineSneakers,
 			...sneakers.feminineSneakers,
@@ -125,6 +130,13 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 
 		setFilteredSneakers(sneakersInTheFilter)
 		props.onFilterApplied(sneakersInTheFilter)
+	}
+
+	const unfilterSneakers = (): void => {
+		setSelectedFilter(initialFilterState)
+
+		const filterRadio: NodeListOf<HTMLInputElement> = document.querySelectorAll(".filter-radio")
+		filterRadio.forEach(input => input.checked = false)
 	}
 
 	return (
@@ -165,23 +177,18 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 
 			<div className="filter-actions">
 				<button
+					type="button"
 					className="unapply-filter"
 					onClick={
 						(): void => {
-							setSelectedFilter({
-								sex: null,
-								design: null,
-								ankleHeight: null,
-								shoeLace: null,
-								color: null,
-								material: null
-							})
+							unfilterSneakers()
 							setActionButtonText(unapplyText)
 						}}
 				>
 					<Icon.RemoveFilter className="unapply-filter-icon" />
 				</button>
 				<button
+					type="button"
 					className="apply-filter"
 					onClick={
 						(): void => {
