@@ -8,7 +8,7 @@
 	padding: calc($headerHeight / 4) 0;
 
 	.section-title {
-		font-family: "RethinkSans Extra Bold", sans-serif;
+		font-family: $extraBold;
 		font-size: 4em;
 		margin: 40px 0 0 15px;
 	}
@@ -46,7 +46,7 @@
 			}
 
 			.sneaker-photo-subtitle {
-				font-family: "RethinkSans Medium Italic", sans-serif;
+				font-family: $mediumItalic;
 				font-size: 1rem;
 				margin-top: .5em;
 				text-align: center;

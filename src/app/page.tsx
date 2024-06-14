@@ -19,9 +19,9 @@ import Section from "@/components/Section"
 import Footer from "@/components/Footer"
 
 export default function MPSneakers(): React.JSX.Element {
-	const [sneakersThatHaveBeenFiltered, setsneakersThatHaveBeenFiltered] = useState<SneakerDetails[]>([])
+	const [sneakersThatHaveBeenFiltered, setSneakersThatHaveBeenFiltered] = useState<SneakerDetails[]>([])
 
-	const handleFilterApplied = (sneakers: SneakerDetails[]) => setsneakersThatHaveBeenFiltered(sneakers)
+	const handleFilterApplied = (sneakers: SneakerDetails[]) => setSneakersThatHaveBeenFiltered(sneakers)
 
 	return (
 		<React.Fragment>

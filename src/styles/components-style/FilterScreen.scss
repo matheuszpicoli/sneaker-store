@@ -6,14 +6,15 @@
 	color: $white;
 	display: flex;
 	flex-direction: column;
-	height: calc(96.5vh - $headerHeight);
+	height: calc(100vh - $headerHeight);
 	left: 0;
 	overflow: auto;
-	padding: 15px;
+	padding: calc($headerHeight + 15px) 15px;
 	pointer-events: none;
-	position: absolute;
-	top: $headerHeight;
+	position: fixed;
+	top: 0;
 	width: 20vw;
+	z-index: -1;
 
 	.text-in-quotation-marks {
 		color: $orange;
@@ -21,15 +22,12 @@
 
 	.apply-filter {
 		@include transition(300ms);
-		background-color: transparent;
-		border-radius: 15px;
 		border: 2px inset $orange;
-		color: $orange;
 		cursor: pointer;
-		font-family: "RethinkSans Bold", sans-serif;
-		letter-spacing: 1px;
+		font-family: $bold;
+		margin-bottom: $headerHeight;
 		outline: none;
-		padding: 15px;
+		padding: 1em;
 		pointer-events: stroke;
 
 		&:hover {
@@ -37,8 +35,7 @@
 		}
 
 		&:active {
-			color: $white;
-			font-family: "RethinkSans Extra Bold", sans-serif;
+			font-family: $extraBold;
 			opacity: 1;
 		}
 	}
@@ -47,7 +44,7 @@
 		margin: 1em 0;
 
 		.filter-category {
-			font-family: "RethinkSans Extra Bold Italic", sans-serif;
+			font-family: $extraBoldItalic;
 			margin-bottom: 1em;
 		}
 

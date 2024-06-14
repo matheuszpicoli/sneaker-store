@@ -16,7 +16,7 @@
 
 		.additional-information-text-title {
 			display: inline;
-			font-family: "RethinkSans Bold", sans-serif;
+			font-family: $bold;
 		}
 
 		.additional-information-text-subtitle {
@@ -34,7 +34,7 @@
 
 	.list {
 		.list-title {
-			font-family: "RethinkSans Bold", sans-serif;
+			font-family: $bold;
 		}
 
 		.list-items {
@@ -50,7 +50,7 @@
 				}
 
 				&:active {
-					font-family: "RethinkSans Bold", sans-serif;
+					font-family: $bold;
 				}
 			}
 		}

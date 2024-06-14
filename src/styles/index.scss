@@ -17,10 +17,12 @@
 
 //. Global
 * {
-	font-family: "RethinkSans Regular", sans-serif;
+	font-family: $regular;
+	font-synthesis: none;
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
+	text-rendering: optimizeLegibility;
 
 	&::selection {
 		background-color: #560056;

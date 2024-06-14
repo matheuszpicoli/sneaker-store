@@ -86,7 +86,7 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 		color: null,
 		material: null
 	})
-	const [filteredSneakers, setFilteredSneakers] = useState<sneakers.SneakerDetails[]>([])
+	const [filteredSneakers, setFilteredSneakers] = useState<SneakerDetails[]>([])
 
 	const handleRadioChange = (id: keyof Category, value: string) => {
 		setSelectedFilter(previousFilter => ({
@@ -153,10 +153,7 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 				<Radio label="Premium" id="material" index={2} onChange={handleRadioChange} />
 			</Filter>
 
-			<button
-				className="apply-filter"
-				onClick={filterSneakers}
-			>
+			<button className="apply-filter" onClick={filterSneakers}>
 				Aplicar filtro
 			</button>
 		</aside>
