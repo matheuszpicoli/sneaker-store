@@ -1,12 +1,12 @@
 //- React
 import React from "react"
 
-//- Next
-import Image from "next/image"
-
 //- API
 import * as sneakers from "@/api/sneakers"
 import type { SneakerDetails } from "@/api/sneakers"
+
+//- Components
+import SectionModel from "./SectionModel"
 
 type Month = {
 	january: 1,
@@ -59,42 +59,7 @@ function getSeason(): Season {
 
 const aboutTheSection: string = "Confira a nossa seção de tênis para "
 
-const maskForPrice = (price: number): string => `R$ ${price.toFixed(2).replace(".", ",")}`
-
-interface SectionModelProps {
-	id: string
-	title: string
-	text: string
-	sneakers: SneakerDetails[]
-}
-
-function SectionModel(props: SectionModelProps): React.JSX.Element {
-	return (
-		<section id={props.id} className={props.id}>
-			<h3 className="section-title">{props.title}</h3>
-			<div className="content">
-				<p className="about">{props.text}</p>
-				<div className="sneakers">
-					{props.sneakers.map((sneaker, index) => (
-						<figure key={index}>
-							<Image
-								className="sneaker-photo"
-								src={sneaker.image}
-								alt={`Tênis ${props.title.toLowerCase()} ${index + 1}`}
-								loading="lazy"
-								priority={false}
-							/>
-							<figcaption className="sneaker-photo-subtitle">
-								{sneaker.model}
-								<p className="sneaker-price">{maskForPrice(sneaker.price)}</p>
-							</figcaption>
-						</figure>
-					))}
-				</div>
-			</div>
-		</section>
-	)
-}
+export const maskForPrice = (price: number): string => `R$ ${price.toFixed(2).replace(".", ",")}`
 
 interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"

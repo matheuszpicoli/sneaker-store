@@ -1,10 +1,8 @@
-"use client"
-
 //- React
 import React from "react"
 
 //- Next
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 
 //- Sneakers
 import { highlightSneakers } from "@/api/sneakers"

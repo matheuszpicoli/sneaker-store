@@ -454,7 +454,7 @@ export const teensSneakers: SneakerDetails[] = [
 		}
 	},
 	{
-		image: Sneaker.teen2, model: "Stationer\"s", price: 99.99, section: "teens",
+		image: Sneaker.teen2, model: "Stationer\'s", price: 99.99, section: "teens",
 		category: {
 			ankleHeight: filter.ankleHeight.medium,
 			color: filter.color.colorful,

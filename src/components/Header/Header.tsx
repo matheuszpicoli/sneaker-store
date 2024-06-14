@@ -1,51 +1,16 @@
-"use client"
-
 //- React
 import React, { useState, useLayoutEffect } from "react"
 
 //- Icons
-import * as Icon from "../icons/icons"
+import * as Icon from "@/icons/icons"
 
 //- Components
-import FilterSceen from "./FilterSceen"
+import FilterSceen from "../FilterScreen/FilterSceen"
+import Logo from "./Logo"
+import NavigateMenu from "./NavigateMenu"
 
 //- API
 import type { SneakerDetails } from "@/api/sneakers"
-
-function Logo(): React.JSX.Element {
-	const returnToTop = (): void => window.scrollTo(0, 0)
-
-	return (
-		<div className="logo-area" onClick={returnToTop}>
-			<h1 className="logo-title">
-				<span className="emphasis-title-font">MP</span> Sneakers
-			</h1>
-		</div>
-	)
-}
-
-interface NavigateMenuProps {
-	navigateTo: string
-	linkText: string
-}
-
-function NavigateMenu(props: NavigateMenuProps): React.JSX.Element {
-	const navigate = (element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
-		event.preventDefault()
-
-		window.history.pushState(null, window.location.pathname)
-
-		document.getElementById(element)?.scrollIntoView()
-	}
-
-	return (
-		<div className="link-nav">
-			<a className="link-to-path" onClick={event => navigate(props.navigateTo, event)}>
-				{props.linkText}
-			</a>
-		</div>
-	)
-}
 
 interface HeaderProps {
 	filter: (filter: SneakerDetails[]) => void
