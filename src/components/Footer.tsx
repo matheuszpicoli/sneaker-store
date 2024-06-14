@@ -16,7 +16,7 @@ interface AdditionalInformationProps {
 	subtitle: string
 }
 
-function AdditionalInformation<T extends AdditionalInformationProps>(props: T): React.JSX.Element {
+function AdditionalInformation(props: AdditionalInformationProps): React.JSX.Element {
 	return (
 		<div className="additional-information-item">
 			<props.icon className="additional-information-icon" />
@@ -31,15 +31,13 @@ interface ListProps {
 	model: "institutional" | "help" | "salesCenter" | "relationshipCenter"
 }
 
-function List<T extends ListProps>(props: T): React.JSX.Element {
+function List(props: ListProps): React.JSX.Element {
 	return (
 		<div className="list">
 			<React.Fragment>
 				<p className="list-title">{props.title}</p>
 				{listModel[props.model].map((item, index) => (
-					<ul key={index}
-						className="list-items"
-					>
+					<ul key={index} className="list-items">
 						<li className="list-item">{item}</li>
 					</ul>
 				))}
@@ -52,7 +50,7 @@ interface SocialMediaProps {
 	icon: IconType
 }
 
-function SocialMedia<T extends SocialMediaProps>(props: T): React.JSX.Element {
+function SocialMedia(props: SocialMediaProps): React.JSX.Element {
 	return (
 		<div className="social-media">
 			<props.icon className="social-media-icon" />

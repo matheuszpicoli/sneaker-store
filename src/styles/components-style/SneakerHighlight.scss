@@ -1,21 +1,23 @@
-.highlight-subtitle {
-	cursor: default;
-	margin: .5em 0;
-	text-align: center;
-}
+.highlight {
+	.highlight-subtitle {
+		cursor: default;
+		margin: .5em 0;
+		text-align: center;
+	}
 
-.sneaker-highlight {
-	align-items: center;
-	display: flex;
-	min-height: 60vh;
-	margin: 3em 0 5em 0;
-	position: relative;
+	.sneaker-highlight {
+		align-items: center;
+		display: flex;
+		min-height: 60vh;
+		margin: 3em 0 5em 0;
+		position: relative;
 
-	.highlight-photo {
-		border-radius: 5px;
-		height: 500px;
-		object-fit: cover;
-		pointer-events: none;
-		width: 100%;
+		.highlight-photo {
+			border-radius: 5px;
+			height: 500px;
+			object-fit: cover;
+			pointer-events: none;
+			width: 100%;
+		}
 	}
 }

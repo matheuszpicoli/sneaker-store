@@ -10,19 +10,53 @@ import * as Icon from "../icons/icons"
 import FilterSceen from "./FilterSceen"
 
 //- API
-import * as sneakers from "@/api/sneakers"
+import type { SneakerDetails } from "@/api/sneakers"
 
-interface HeaderProps {
-	filter: (filter: sneakers.SneakerDetails[]) => void
+function Logo(): React.JSX.Element {
+	const returnToTop = (): void => window.scrollTo(0, 0)
+
+	return (
+		<div className="logo-area" onClick={returnToTop}>
+			<h1 className="logo-title">
+				<span className="emphasis-title-font">MP</span> Sneakers
+			</h1>
+		</div>
+	)
 }
 
-export default function Header<T extends HeaderProps>(props: T): React.JSX.Element {
+interface NavigateMenuProps {
+	navigateTo: string
+	linkText: string
+}
+
+function NavigateMenu(props: NavigateMenuProps): React.JSX.Element {
+	const navigate = (element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
+		event.preventDefault()
+
+		window.history.pushState(null, window.location.pathname)
+
+		document.getElementById(element)?.scrollIntoView()
+	}
+
+	return (
+		<div className="link-nav">
+			<a className="link-to-path" onClick={event => navigate(props.navigateTo, event)}>
+				{props.linkText}
+			</a>
+		</div>
+	)
+}
+
+interface HeaderProps {
+	filter: (filter: SneakerDetails[]) => void
+}
+
+export default function Header(props: HeaderProps): React.JSX.Element {
 	const [filtering, setFiltering] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
-		filtering ?
-			document.body.classList.add("no-events") :
-			document.body.classList.remove("no-events")
+		if (filtering) document.body.classList.add("no-events")
+		else document.body.classList.remove("no-events")
 	}, [filtering])
 
 	useLayoutEffect(() => {
@@ -37,48 +71,15 @@ export default function Header<T extends HeaderProps>(props: T): React.JSX.Eleme
 		}
 	}, [filtering, setFiltering])
 
-	function navigateTo(element: string, event: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void {
-		event.preventDefault()
-
-		window.history.pushState(null, window.location.pathname)
-
-		document.getElementById(element)?.scrollIntoView()
-	}
-
-	const returnToTop = () => window.scrollTo(0, 0)
-
 	return (
 		<header>
 			<nav className="navbar">
-				<div
-					className="logo-area"
-					onClick={returnToTop}
-				>
-					<h1 className="logo-title">
-						<span className="emphasis-title-font">MP</span> Sneakers
-					</h1>
-				</div>
+				<Logo />
 				<div className="link-area">
-					<div className="link-nav">
-						<a onClick={event => navigateTo("masculine", event)} className="link-to-path">
-							Masculino
-						</a>
-					</div>
-					<div className="link-nav">
-						<a onClick={event => navigateTo("feminine", event)} className="link-to-path">
-							Feminino
-						</a>
-					</div>
-					<div className="link-nav">
-						<a onClick={event => navigateTo("teens", event)} className="link-to-path">
-							Teens
-						</a>
-					</div>
-					<div className="link-nav">
-						<a onClick={event => navigateTo("collections", event)} className="link-to-path">
-							Coleções
-						</a>
-					</div>
+					<NavigateMenu navigateTo="masculine" linkText="Masculino" />
+					<NavigateMenu navigateTo="feminine" linkText="Feminino" />
+					<NavigateMenu navigateTo="teens" linkText="Teens" />
+					<NavigateMenu navigateTo="collections" linkText="Coleções" />
 				</div>
 				<div className="icons-area">
 					<section className="favorite">
@@ -87,23 +88,24 @@ export default function Header<T extends HeaderProps>(props: T): React.JSX.Eleme
 							<span className="icon-description">Favoritos</span>
 						</div>
 					</section>
-					<section className="filter">
-						{!filtering ? (
+					{filtering && (
+						<section className="filter">
+							<div className="icon-area" onClick={(): void => setFiltering(false)}>
+								<Icon.Unfilter className="filter-icon" />
+								<span className="icon-description">Esconder</span>
+							</div>
+
+							<FilterSceen onFilterApplied={props.filter} />
+						</section>
+					)}
+					{!filtering && (
+						<section className="filter">
 							<div className="icon-area" onClick={(): void => setFiltering(true)}>
 								<Icon.Filter className="filter-icon" />
 								<span className="icon-description">Filtro</span>
 							</div>
-						) : (
-							<React.Fragment>
-								<div className="icon-area" onClick={(): void => setFiltering(false)}>
-									<Icon.Unfilter className="filter-icon" />
-									<span className="icon-description">Esconder</span>
-								</div>
-
-								<FilterSceen onFilterApplied={props.filter} />
-							</React.Fragment>
-						)}
-					</section>
+						</section>
+					)}
 				</div>
 			</nav>
 		</header>

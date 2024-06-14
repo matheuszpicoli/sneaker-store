@@ -18,14 +18,14 @@ interface RootLayoutProps {
 	children: React.ReactNode
 }
 
-export function RootLayout<T extends RootLayoutProps>(props: Readonly<T>): React.JSX.Element {
+export default function RootLayout(props: Readonly<RootLayoutProps>): React.JSX.Element {
 	return (
 		<html lang="pt-br">
 			<body>
-				<main>{props.children}</main>
+				<main>
+					{props.children}
+				</main>
 			</body>
 		</html>
 	)
 }
-
-export default RootLayout
