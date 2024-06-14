@@ -9,6 +9,9 @@ import type { Category, SneakerDetails } from "@/api/sneakers"
 
 import { filter } from "@/api/filter"
 
+//- Icons
+import * as Icon from "@/icons/icons"
+
 interface FilterProps {
 	category: string,
 	children: React.ReactNode
@@ -78,6 +81,9 @@ interface FilterScreenProps {
 }
 
 export default function FilterScreen<T extends FilterScreenProps>(props: T): React.JSX.Element {
+	const applyText: string = "Aplicar filtro"
+	const unapplyText: string = "Remover filtro"
+
 	const [selectedFilter, setSelectedFilter] = useState<Category>({
 		sex: null,
 		design: null,
@@ -87,6 +93,7 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 		material: null
 	})
 	const [filteredSneakers, setFilteredSneakers] = useState<SneakerDetails[]>([])
+	const [actionButtonText, setActionButtonText] = useState<string>(applyText)
 
 	const handleRadioChange = (id: keyof Category, value: string) => {
 		setSelectedFilter(previousFilter => ({
@@ -122,9 +129,12 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 
 	return (
 		<aside className="filter-screen">
-			<strong className="help-text">
-				Para aplicar o filtro, clique em <q className="text-in-quotation-marks">Aplicar filtro</q>.
-			</strong>
+			<p className="help-text">
+				Para aplicar o filtro, clique em <q><span className="explanatory-text">Aplicar filtro</span></q>.
+			</p>
+			<p className="help-text">
+				Clique no ícone {<q><Icon.RemoveFilter className="explanatory-icon" /></q>} para remover o filtro.
+			</p>
 
 			<Filter category="Sexo">
 				<Radio label="Unissex" id="sex" index={1} onChange={handleRadioChange} />
@@ -153,9 +163,35 @@ export default function FilterScreen<T extends FilterScreenProps>(props: T): Rea
 				<Radio label="Premium" id="material" index={2} onChange={handleRadioChange} />
 			</Filter>
 
-			<button className="apply-filter" onClick={filterSneakers}>
-				Aplicar filtro
-			</button>
+			<div className="filter-actions">
+				<button
+					className="unapply-filter"
+					onClick={
+						(): void => {
+							setSelectedFilter({
+								sex: null,
+								design: null,
+								ankleHeight: null,
+								shoeLace: null,
+								color: null,
+								material: null
+							})
+							setActionButtonText(unapplyText)
+						}}
+				>
+					<Icon.RemoveFilter className="unapply-filter-icon" />
+				</button>
+				<button
+					className="apply-filter"
+					onClick={
+						(): void => {
+							filterSneakers()
+							setActionButtonText(applyText)
+						}}
+				>
+					{actionButtonText}
+				</button>
+			</div>
 		</aside>
 	)
 }

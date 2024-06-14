@@ -16,27 +16,62 @@
 	width: 20vw;
 	z-index: -1;
 
-	.text-in-quotation-marks {
-		color: $orange;
-	}
+	.help-text {
+		text-align: center;
 
-	.apply-filter {
-		@include transition(300ms);
-		border: 2px inset $orange;
-		cursor: pointer;
-		font-family: $bold;
-		margin-bottom: $headerHeight;
-		outline: none;
-		padding: 1em;
-		pointer-events: stroke;
-
-		&:hover {
-			opacity: .6;
+		:where(.explanatory-text, .explanatory-icon) {
+			color: $orange;
 		}
 
-		&:active {
-			font-family: $extraBold;
-			opacity: 1;
+		.explanatory-icon {
+			vertical-align: middle;
+		}
+
+		&:first-child {
+			margin-bottom: 1em;
+		}
+	}
+
+	.filter-actions {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+
+		:where(.unapply-filter, .apply-filter) {
+			@include transition(150ms);
+			background-color: transparent;
+			border-radius: 5px;
+			color: $white;
+			cursor: pointer;
+			font-family: $bold;
+			margin-bottom: $headerHeight;
+			outline: none;
+			padding: 1em;
+			pointer-events: stroke;
+
+			&:hover {
+				opacity: .6;
+			}
+
+			&:active {
+				@include filter(invert(1));
+				font-family: $extraBold;
+				opacity: 1;
+				scale: 0.95;
+			}
+		}
+
+		.apply-filter {
+			flex-grow: 1;
+		}
+
+		.unapply-filter {
+			margin-right: 1em;
+
+			.unapply-filter-icon {
+				@include iconSize;
+				vertical-align: middle;
+			}
 		}
 	}
 
