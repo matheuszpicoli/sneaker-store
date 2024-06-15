@@ -5,7 +5,7 @@ import React, { useState, useLayoutEffect } from "react"
 import * as Icon from "@/icons/icons"
 
 //- Components
-import FilterSceen from "../FilterScreen/FilterSceen"
+import FilterSceen from "../FilterScreen"
 import Logo from "./Logo"
 import NavigateMenu from "./NavigateMenu"
 

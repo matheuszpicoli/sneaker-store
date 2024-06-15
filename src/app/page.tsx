@@ -13,10 +13,10 @@ import "@/styles/index.scss"
 import type { SneakerDetails } from "@/api/sneakers"
 
 //- Components
-import Header from "@/components/Header/Header"
-import SneakerHighlight from "@/components/SneakerHighlight/SneakerHighlight"
-import Section from "@/components/Section/Section"
-import Footer from "@/components/Footer/Footer"
+import Header from "@/components/Header"
+import SneakerHighlight from "@/components/SneakerHighlight"
+import Section from "@/components/Section"
+import Footer from "@/components/Footer"
 
 export default function MPSneakers(): React.JSX.Element {
 	const [sneakers, setSneakers] = useState<SneakerDetails[]>([])
