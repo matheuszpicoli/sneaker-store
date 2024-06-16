@@ -1,17 +1,20 @@
 .modal {
+	@include animation(modal-appear 500ms ease-in-out);
 	@include backdrop-filter(blur(50px));
+	align-items: center;
 	border: none;
-	color: $fullBlack;
-	height: 100%;
+	color: $white;
+	display: flex;
 	inset: 0;
+	justify-content: center;
 	position: fixed;
-	width: 100%;
 	z-index: 30;
 
 	.modal-container {
 		display: flex;
 		flex-direction: column;
 		margin: 15px;
+		width: 100%;
 
 		.modal-actions-area {
 			display: flex;
@@ -20,9 +23,13 @@
 
 			.modal-button {
 				@include transition(300ms);
+				@include sticky(1em);
+				border-radius: 15px;
+				border: 2.5px double #00000030;
 				cursor: pointer;
 				font-family: $extraBold;
-				padding: 5px;
+				outline: none;
+				padding: 10px;
 
 				> .button-icon {
 					@include iconSize;
@@ -45,51 +52,133 @@
 			flex-direction: row;
 			justify-content: space-around;
 
-			.modal-image-title {
-				text-align: center;
-				font-family: $medium;
-				font-size: 1.5em;
+			.modal-picture-frame {
+				.modal-image-title {
+					font-family: $medium;
+					font-size: 1.5em;
+					text-align: center;
 
-				&::first-letter {
-					font-family: $extraBold;
-					font-size: 1.6em;
-					text-decoration: underline;
-				}
-			}
-
-			.modal-image {
-				@include filter(drop-shadow(4px 4px 4px #00000080));
-				border-radius: 50%;
-				border: 2.5px double #00000030;
-				height: 300px;
-				margin-top: 1em;
-				width: 300px;
-			}
-
-			.modal-prices {
-				.modal-original-price {
-					color: #adff2f;
-					font-family: $extraBold;
-					font-size: 3em;
-
-					.or {
-						color: $fullBlack;
-						font-family: $medium;
-						font-size: 1rem;
+					&::first-letter {
+						font-family: $extraBold;
+						font-size: 1.6em;
+						text-decoration: underline;
 					}
 				}
 
-				.modal-installments {
-					list-style: none;
+				.modal-image {
+					@include filter(drop-shadow(4px 4px 4px #00000080));
+					@include transition(300ms);
+					border-radius: 50%;
+					border: 2.5px double #00000030;
+					height: 300px;
+					margin-top: 1em;
+					width: 300px;
 
-					.modal-installment-price {
+					&:hover {
+						cursor: zoom-in;
+						scale: 1.5;
+					}
+				}
+			}
+
+			.modal-price-and-actions-area {
+				.modal-sneaker-price {
+					.modal-original-price {
+						color: #adff2f;
+						font-family: $extraBold;
+						font-size: 3em;
+
+						.or {
+							color: $white;
+							font-family: $medium;
+							font-size: 1rem;
+						}
+					}
+
+					.modal-installments {
+						list-style: none;
+
+						.modal-installment-price {
+							@include animation(installments-show 500ms 500ms both);
+							font-family: $medium;
+							font-size: .85em;
+							margin: 2.5px 0;
+							text-align: right;
+
+							@for $child from 1 through 9 {
+								&:nth-child(#{$child}) {
+									@include animation-delay(#{200ms * $child});
+								}
+							}
+						}
+					}
+				}
+
+				.modal-sneaker-actions {
+					display: flex;
+					flex-direction: column;
+
+					:where(.add-to-favorites-button, .add-to-cart-button) {
+						@include transition(300ms);
+						border-radius: 15px;
+						border: 5px double #00000030;
+						cursor: pointer;
 						font-family: $medium;
-						font-size: .85em;
-						margin: 2.5px 0;
-						text-align: right;
+						margin: 1em 0;
+						outline: none;
+						padding: 15px;
+
+						:where(.add-to-favorites-icon, .add-to-cart-icon) {
+							@include iconSize;
+							margin-left: 5px;
+							vertical-align: middle;
+						}
+
+						.add-to-favorites-icon {
+							color: #7e2727;
+						}
+
+						.add-to-cart-icon {
+							color: #6926b6;
+						}
+
+						&:hover {
+							opacity: 0.7;
+						}
+
+						&:active {
+							border: 5px double #00000080;
+							font-family: $bold;
+							opacity: 1;
+							scale: 0.9;
+						}
 					}
 				}
 			}
 		}
+	}
+}
+
+@include keyframes(modal-appear) {
+	from {
+		@include transform(translate(-100%, -100%) rotate(360deg));
+		opacity: 0;
+	}
+
+	to {
+		@include transform(translate(0, 0) rotate(0));
+		opacity: 1;
+	}
+}
+
+@include keyframes(installments-show) {
+	from {
+		@include transform(translateY(1em));
+		opacity: 0;
+	}
+
+	to {
+		@include transform(translateY(0));
+		opacity: 1;
 	}
 }

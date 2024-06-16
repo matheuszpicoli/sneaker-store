@@ -33,7 +33,7 @@ export default function SneakerModal(props: SneakerModalProps) {
 				</section>
 
 				<section className="modal-sneaker-area">
-					<figure>
+					<figure className="modal-picture-frame">
 						<figcaption className="modal-image-title">{props.model}</figcaption>
 						<Image
 							className="modal-image"
@@ -42,15 +42,25 @@ export default function SneakerModal(props: SneakerModalProps) {
 							priority={true}
 						/>
 					</figure>
-					<div className="modal-prices">
-						<p className="modal-original-price">{maskForPrice(props.price)} <span className="or">ou</span></p>
-						<ul className="modal-installments">
-							{[2, 3, 4, 5, 6, 7, 8, 9, 10].map(index => (
-								<li key={index} className="modal-installment-price">
-									{index}x de {maskForPrice(props.price / index)} sem juros
-								</li>
-							))}
-						</ul>
+					<div className="modal-price-and-actions-area">
+						<section className="modal-sneaker-price">
+							<p className="modal-original-price">{maskForPrice(props.price)} <span className="or">ou</span></p>
+							<ul className="modal-installments">
+								{[2, 3, 4, 5, 6, 7, 8, 9, 10].map(index => (
+									<li key={index} className="modal-installment-price">
+										{index}x de {maskForPrice(props.price / index)} sem juros
+									</li>
+								))}
+							</ul>
+						</section>
+						<section className="modal-sneaker-actions">
+							<button type="button" className="add-to-favorites-button">
+								Adicionar aos favoritos<Icon.Favorite className="add-to-favorites-icon" />
+							</button>
+							<button type="button" className="add-to-cart-button">
+								Adicionar ao carrinho<Icon.Cart className="add-to-cart-icon" />
+							</button>
+						</section>
 					</div>
 				</section>
 			</div>

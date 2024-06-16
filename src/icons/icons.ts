@@ -1,5 +1,6 @@
 //- React icons
 export { BiHeart as Favorite } from "react-icons/bi"
+export { BsCart2 as Cart } from "react-icons/bs"
 export { FaFacebook as Facebook } from "react-icons/fa"
 export { FaInstagram as Instagram } from "react-icons/fa"
 export { FaTruck as Truck } from "react-icons/fa"
