@@ -1,5 +1,3 @@
-"use client"
-
 //- React
 import React from "react"
 
@@ -61,7 +59,11 @@ function getSeason(): Season {
 
 const aboutTheSection: string = "Confira a nossa seção de tênis para "
 
-export const maskForPrice = (price: number): string => `R$ ${price.toFixed(2).replace(".", ",")}`
+export function maskForPrice(price: number): string {
+	const finalPrice = Math.floor(price * 100) / 100
+
+	return `R$ ${finalPrice.toFixed(2).replace(".", ",")}`
+}
 
 interface SectionProps {
 	reference: "masculine" | "feminine" | "teens" | "collections"

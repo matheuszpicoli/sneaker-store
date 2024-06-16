@@ -1,14 +1,14 @@
 "use client"
 
 //- React
-import React from "react"
+import React, { useState } from "react"
 
 //- Next
 import Image from "next/image"
-import { useRouter } from "next/navigation"
 
 //- Components/Variables
 import { maskForPrice } from "."
+import SneakerModal from "./SneakerModal"
 
 //- Types
 import type { SneakerDetails } from "@/api/sneakers"
@@ -21,9 +21,10 @@ interface SectionModelProps {
 }
 
 export default function SectionModel(props: SectionModelProps): React.JSX.Element {
-	const router = useRouter()
+	const [selectedSneaker, setSelectedSneaker] = useState<SneakerDetails | null>(null)
 
-	const handleSneakerProperties = (sneakerId: number) => router.push(`/sneaker/${sneakerId}`)
+	const handleToRenderComponent = (sneaker: SneakerDetails): void => setSelectedSneaker(sneaker)
+	const closeComponent = (): void => setSelectedSneaker(null)
 
 	return (
 		<section id={props.id} className={props.id}>
@@ -39,7 +40,7 @@ export default function SectionModel(props: SectionModelProps): React.JSX.Elemen
 								alt={`Tênis ${props.title.toLowerCase()} ${index + 1}`}
 								loading="lazy"
 								priority={false}
-								onClick={() => handleSneakerProperties(sneaker.id)}
+								onClick={(): void => handleToRenderComponent(sneaker)}
 							/>
 							<figcaption className="sneaker-photo-subtitle">
 								{sneaker.model}
@@ -49,18 +50,14 @@ export default function SectionModel(props: SectionModelProps): React.JSX.Elemen
 					))}
 				</div>
 			</div>
+			{selectedSneaker && (
+				<SneakerModal
+					image={selectedSneaker.image}
+					model={selectedSneaker.model}
+					price={selectedSneaker.price}
+					onClose={closeComponent}
+				/>
+			)}
 		</section>
 	)
 }
-
-/*
-const allSneakers = [
-	...sneakers.masculineSneakers,
-	...sneakers.feminineSneakers,
-	...sneakers.teensSneakers,
-	...sneakers.collectionSneakers.autumn,
-	...sneakers.collectionSneakers.spring,
-	...sneakers.collectionSneakers.summer,
-	...sneakers.collectionSneakers.winter
-]
-*/

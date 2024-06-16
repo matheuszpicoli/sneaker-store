@@ -6,7 +6,6 @@ $extraBold: "RethinkSans Extra Bold", sans-serif;
 $extraBoldItalic: "RethinkSans Extra Bold Italic", sans-serif;
 $feminineColor: #19a39c;
 $fullBlack: #000000;
-$gradientOpacity: 0.7;
 $headerHeight: 3em;
 $italic: "RethinkSans Italic", sans-serif;
 $masculineColor: #1642b2;
@@ -58,6 +57,11 @@ $white: #bababa;
 	filter: $filterProperties;
 	-ms-filter: $filterProperties;
 	-webkit-filter: $filterProperties;
+}
+
+@mixin backdrop-filter($backdropFilterProperty) {
+	backdrop-filter: $backdropFilterProperty;
+	-webkit-backdrop-filter: $backdropFilterProperty;
 }
 
 @mixin animation($animationProperties...) {

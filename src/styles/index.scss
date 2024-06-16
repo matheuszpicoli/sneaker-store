@@ -1,22 +1,22 @@
-//. Fonts
+//* Fonts
 @import "./fonts.scss";
 
-//. Variables, mixins, functions and others things
+//* Variables, mixins, functions and others things
 @import "./variablesMixinsAndOthers.scss";
 
-//. Style files
+//* Style files
 @import "./tagLayout.scss";
 @import "./extras.scss";
 
-//. Components
+//* Components
 @import "./components-style/Header.scss";
 @import "./components-style/FilterScreen.scss";
 @import "./components-style/SneakerHighlight.scss";
 @import "./components-style/Section.scss";
-@import "./components-style/SneakerProperties.scss";
+@import "./components-style/SneakerModal.scss";
 @import "./components-style/Footer.scss";
 
-//. Global
+//* Global
 * {
 	font-family: $regular;
 	font-synthesis: none;

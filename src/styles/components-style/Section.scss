@@ -56,17 +56,33 @@
 }
 
 .masculine {
-	@include linear-gradient(to top left, $masculineColor 20%, rgba($masculineColor, $gradientOpacity) 80%);
+	@include linear-gradient(to top left, $masculineColor 20%, rgba($masculineColor, 0.7) 80%);
+
+	.modal {
+		background-color: rgba($masculineColor, 0.5);
+	}
 }
 
 .feminine {
-	@include linear-gradient(to bottom right, $feminineColor 20%, rgba($feminineColor, $gradientOpacity) 80%);
+	@include linear-gradient(to bottom right, $feminineColor 20%, rgba($feminineColor, 0.7) 80%);
+
+	.modal {
+		background-color: rgba($feminineColor, 0.5);
+	}
 }
 
 .teens {
-	@include linear-gradient(to top right, $teensColor 20%, rgba($teensColor, $gradientOpacity) 80%);
+	@include linear-gradient(to top right, $teensColor 20%, rgba($teensColor, 0.7) 80%);
+
+	.modal {
+		background-color: rgba($teensColor, 0.5);
+	}
 }
 
 .collections {
-	@include linear-gradient(to bottom left, $collectionsColor 20%, rgba($collectionsColor, $gradientOpacity) 80%);
+	@include linear-gradient(to bottom left, $collectionsColor 20%, rgba($collectionsColor, 0.7) 80%);
+
+	.modal {
+		background-color: rgba($collectionsColor, 0.5);
+	}
 }
