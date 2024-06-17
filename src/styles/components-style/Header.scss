@@ -62,21 +62,17 @@
 	.icons-area {
 		display: inherit;
 
-		:where(.favorite, .filter) {
+		:where(.favorite, .filter, .cart) {
 			cursor: pointer;
 
 			.icon-area {
 				@include transition(300ms);
 
-				:where(.favorite-icon, .filter-icon) {
+				:where(.favorite-icon, .filter-icon, .cart-icon) {
 					@include iconSize;
 					cursor: pointer;
-					vertical-align: bottom;
-
-					~ .icon-description {
-						margin: 0 2.5px;
-						position: relative;
-					}
+					vertical-align: middle;
+					margin-left: 10px;
 				}
 
 				&:hover {
@@ -89,7 +85,7 @@
 			}
 		}
 
-		.filter {
+		&:last-child {
 			margin: $spacing;
 		}
 	}

@@ -75,7 +75,7 @@ export default function FilterScreen(props: FilterScreenProps): React.JSX.Elemen
 	}
 
 	return (
-		<aside className="filter-screen">
+		<aside className="filter-screen" onClick={event => event.stopPropagation()}>
 			<p className="help-text">
 				Para aplicar o filtro, clique em <q><span className="explanatory-text">Aplicar filtro</span></q>.
 			</p>

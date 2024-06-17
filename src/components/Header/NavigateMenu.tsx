@@ -1,8 +1,11 @@
 //- React
 import React from "react"
 
+//- Types
+import type { Section } from "@/api/sneakers"
+
 interface NavigateMenuProps {
-	navigateTo: string
+	navigateToSection: Section
 	linkText: string
 }
 
@@ -17,7 +20,7 @@ export default function NavigateMenu(props: NavigateMenuProps): React.JSX.Elemen
 
 	return (
 		<div className="link-nav">
-			<a className="link-to-path" onClick={event => navigate(props.navigateTo, event)}>
+			<a className="link-to-path" onClick={event => navigate(props.navigateToSection, event)}>
 				{props.linkText}
 			</a>
 		</div>

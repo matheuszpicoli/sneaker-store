@@ -5,7 +5,10 @@ import React, { useState, useLayoutEffect } from "react"
 import * as Icon from "@/icons/icons"
 
 //- Components
+import CartScreen from "../CartScreen"
+import FavoriteScreen from "../FavoriteScreen"
 import FilterSceen from "../FilterScreen"
+
 import Logo from "./Logo"
 import NavigateMenu from "./NavigateMenu"
 
@@ -17,57 +20,84 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps): React.JSX.Element {
-	const [filtering, setFiltering] = useState<boolean>(false)
+	const [favoriteScreen, setFavoriteScreen] = useState<boolean>(false)
+	const [filterScreen, setFilterScreen] = useState<boolean>(false)
+	const [cartScreen, setCartScreen] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
-		if (filtering) document.body.classList.add("no-events")
+		if (favoriteScreen || filterScreen || cartScreen) document.body.classList.add("no-events")
 		else document.body.classList.remove("no-events")
-	}, [filtering])
+	}, [favoriteScreen, filterScreen, cartScreen])
 
 	useLayoutEffect(() => {
-		if (filtering) {
-			const handleKeyDown = (event: KeyboardEvent): void => {
-				if (event.key === "Escape") setFiltering(false)
+		const handleKeyDown = (event: KeyboardEvent): void => {
+			const esc: string = "Escape"
+
+			if (event.key === esc) {
+				if (favoriteScreen) setFavoriteScreen(false)
+				else if (filterScreen) setFilterScreen(false)
+				else if (cartScreen) setCartScreen(false)
 			}
-
-			window.addEventListener("keydown", handleKeyDown)
-
-			return () => window.removeEventListener("keydown", handleKeyDown)
 		}
-	}, [filtering, setFiltering])
+
+		window.addEventListener("keydown", handleKeyDown)
+
+		return () => window.removeEventListener("keydown", handleKeyDown)
+	}, [favoriteScreen, filterScreen, cartScreen, setFavoriteScreen, setFilterScreen, setCartScreen])
 
 	return (
 		<header>
 			<nav className="navbar">
 				<Logo />
 				<div className="link-area">
-					<NavigateMenu navigateTo="masculine" linkText="Masculino" />
-					<NavigateMenu navigateTo="feminine" linkText="Feminino" />
-					<NavigateMenu navigateTo="teens" linkText="Teens" />
-					<NavigateMenu navigateTo="collections" linkText="Coleções" />
+					<NavigateMenu navigateToSection="masculine" linkText="Masculino" />
+					<NavigateMenu navigateToSection="feminine" linkText="Feminino" />
+					<NavigateMenu navigateToSection="teens" linkText="Teens" />
+					<NavigateMenu navigateToSection="collections" linkText="Coleções" />
 				</div>
 				<div className="icons-area">
-					<section className="favorite">
-						<div className="icon-area">
-							<Icon.Favorite className="favorite-icon" />
-							<span className="icon-description">Favoritos</span>
-						</div>
-					</section>
-					{filtering && (
+					{favoriteScreen ? (
+						<section className="favorite" onClick={(): void => setFavoriteScreen(false)}>
+							<div className="icon-area">
+								<Icon.Favorite className="favorite-icon" title="Favoritos" />
+							</div>
+
+							<FavoriteScreen />
+						</section>
+					) : (
+						<section className="favorite" onClick={(): void => setFavoriteScreen(true)}>
+							<div className="icon-area">
+								<Icon.Favorite className="favorite-icon" title="Favoritos" />
+							</div>
+						</section>
+					)}
+					{filterScreen ? (
 						<section className="filter">
-							<div className="icon-area" onClick={(): void => setFiltering(false)}>
-								<Icon.Unfilter className="filter-icon" />
-								<span className="icon-description">Esconder</span>
+							<div className="icon-area" onClick={(): void => setFilterScreen(false)}>
+								<Icon.Unfilter className="filter-icon" title="Esconder filtro" />
 							</div>
 
 							<FilterSceen onFilterApplied={props.filter} />
 						</section>
-					)}
-					{!filtering && (
+					) : (
 						<section className="filter">
-							<div className="icon-area" onClick={(): void => setFiltering(true)}>
-								<Icon.Filter className="filter-icon" />
-								<span className="icon-description">Filtro</span>
+							<div className="icon-area" onClick={(): void => setFilterScreen(true)}>
+								<Icon.Filter className="filter-icon" title="Filtro" />
+							</div>
+						</section>
+					)}
+					{cartScreen ? (
+						<section className="cart">
+							<div className="icon-area" onClick={(): void => setCartScreen(false)}>
+								<Icon.Cart className="cart-icon" title="Carrinho" />
+							</div>
+
+							<CartScreen />
+						</section>
+					) : (
+						<section className="cart">
+							<div className="icon-area" onClick={(): void => setCartScreen(true)}>
+								<Icon.Cart className="cart-icon" title="Carrinho" />
 							</div>
 						</section>
 					)}

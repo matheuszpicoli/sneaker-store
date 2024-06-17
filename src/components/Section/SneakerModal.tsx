@@ -1,5 +1,5 @@
 //- React
-import React from "react"
+import React, { useState, useEffect } from "react"
 
 //- Next
 import Image from "next/image"
@@ -12,13 +12,31 @@ import * as Icon from "@/icons/icons"
 import { maskForPrice } from "."
 
 interface SneakerModalProps {
-	image: StaticImageData,
+	image: StaticImageData
 	model: string
 	price: number
 	onClose: () => void
 }
 
+export type SneakerToFavorite = {
+	image: StaticImageData
+	model: string
+}
+
 export default function SneakerModal(props: SneakerModalProps) {
+	const [favorites, setFavorites] = useState<SneakerToFavorite[]>([])
+
+	const sneakerToFavorite: SneakerToFavorite = {
+		image: props.image,
+		model: props.model
+	}
+
+	const addToFavorites = (sneaker: SneakerToFavorite) => setFavorites([...favorites, sneaker])
+
+	useEffect(() => {
+		console.log(favorites)
+	}, [favorites])
+
 	return (
 		<section className="modal">
 			<div className="modal-container">
@@ -54,7 +72,11 @@ export default function SneakerModal(props: SneakerModalProps) {
 							</ul>
 						</section>
 						<section className="modal-sneaker-actions">
-							<button type="button" className="add-to-favorites-button">
+							<button
+								type="button"
+								className="add-to-favorites-button"
+								onClick={() => console.log(addToFavorites(sneakerToFavorite))}
+							>
 								Adicionar aos favoritos<Icon.Favorite className="add-to-favorites-icon" />
 							</button>
 							<button type="button" className="add-to-cart-button">
