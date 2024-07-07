@@ -1,3 +1,4 @@
+//* Charset
 @charset "utf-8";
 
 //* Fonts
@@ -12,7 +13,6 @@
 
 //* Components
 @import "./components-style/Header.scss";
-@import "./components-style/FavoriteScreen.scss";
 @import "./components-style/FilterScreen.scss";
 @import "./components-style/CartScreen.scss";
 @import "./components-style/SneakerHighlight.scss";
