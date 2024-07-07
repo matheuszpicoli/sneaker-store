@@ -62,13 +62,13 @@
 	.icons-area {
 		display: inherit;
 
-		:where(.favorite, .filter, .cart) {
+		:where(.filter, .cart) {
 			cursor: pointer;
 
 			.icon-area {
 				@include transition(300ms);
 
-				:where(.favorite-icon, .filter-icon, .cart-icon) {
+				:where(.filter-icon, .cart-icon) {
 					@include iconSize;
 					cursor: pointer;
 					vertical-align: middle;

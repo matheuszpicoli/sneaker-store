@@ -18,25 +18,7 @@ interface SneakerModalProps {
 	onClose: () => void
 }
 
-export type SneakerToFavorite = {
-	image: StaticImageData
-	model: string
-}
-
 export default function SneakerModal(props: SneakerModalProps) {
-	const [favorites, setFavorites] = useState<SneakerToFavorite[]>([])
-
-	const sneakerToFavorite: SneakerToFavorite = {
-		image: props.image,
-		model: props.model
-	}
-
-	const addToFavorites = (sneaker: SneakerToFavorite) => setFavorites([...favorites, sneaker])
-
-	useEffect(() => {
-		console.log(favorites)
-	}, [favorites])
-
 	return (
 		<section className="modal">
 			<div className="modal-container">
@@ -72,13 +54,6 @@ export default function SneakerModal(props: SneakerModalProps) {
 							</ul>
 						</section>
 						<section className="modal-sneaker-actions">
-							<button
-								type="button"
-								className="add-to-favorites-button"
-								onClick={() => console.log(addToFavorites(sneakerToFavorite))}
-							>
-								Adicionar aos favoritos<Icon.Favorite className="add-to-favorites-icon" />
-							</button>
 							<button type="button" className="add-to-cart-button">
 								Adicionar ao carrinho<Icon.Cart className="add-to-cart-icon" />
 							</button>
