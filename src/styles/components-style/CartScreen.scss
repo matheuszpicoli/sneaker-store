@@ -2,11 +2,6 @@
 	@include animation(cart-screen-appear 350ms ease-in-out);
 	background-color: $white;
 	cursor: default;
-	inset: 0;
-	overflow: auto;
-	position: fixed;
-	width: auto;
-	z-index: -10;
 
 	.cart-screen-navigation {
 		margin: 2em 0 0 2em;
@@ -22,12 +17,13 @@
 			}
 
 			.cart-screen-navigation-button-text {
-				font-size: 1.5em;
 				font-family: $medium;
+				font-size: 1.5em;
 				vertical-align: middle;
 
 				.emphasis {
-					font-family: $extraBold;
+					color: $orange;
+					font-family: $bold;
 				}
 			}
 
@@ -45,12 +41,13 @@
 		margin: 2em;
 
 		.cart-screen-title {
-			font-size: 1.2em;
 			font-family: $medium;
+			font-size: 1.2em;
 			letter-spacing: -0.5px;
 
 			.cart-screen-icon {
 				@include iconSize;
+				color: $orange;
 				vertical-align: middle;
 			}
 		}
@@ -65,6 +62,61 @@
 
 				> li {
 					margin: 1em 0 0 3em;
+
+					.cart-screen-items-list-sneaker-image {
+						@include filter(drop-shadow(4px 4px 4px #00000080));
+						border-radius: 50%;
+						border: 5px double #00000030;
+						margin-top: 2em;
+						pointer-events: none;
+					}
+
+					.cart-screen-items-list-sneaker-description {
+						margin: $spacing;
+					}
+
+					.cart-screen-items-list-remove-item-button {
+						background-color: transparent;
+						border: none;
+						cursor: default;
+
+						.cart-screen-items-list-remove-item-icon {
+							@include iconSize;
+							@include transition(250ms);
+							cursor: pointer;
+							color: $orange;
+							font-weight: 700;
+							vertical-align: middle;
+
+							&:hover {
+								color: #ff0000;
+							}
+
+							&:active {
+								color: $orange;
+								scale: .8;
+							}
+						}
+
+						&::after {
+							@include transform(translateX(-30%));
+							@include transition(transform 300ms ease, opacity 800ms ease);
+							opacity: 0;
+							content: attr(aria-label);
+							display: inline-block;
+							font-family: $mediumItalic;
+							font-size: 0.8em;
+							pointer-events: none;
+						}
+
+						&:hover {
+							&::after {
+								@include transform(translateX(0));
+								opacity: 1;
+								color: $fullBlack;
+							}
+						}
+					}
 				}
 			}
 		}
@@ -75,9 +127,14 @@
 			right: 0;
 
 			.cart-screen-confirm-order-button {
-				padding: 1em;
-				margin: 0.5em;
+				@include transition(300ms);
+				border-radius: 15px;
+				border: 5px double #00000030;
 				cursor: pointer;
+				font-family: $medium;
+				margin: 1em 2em;
+				outline: none;
+				padding: 15px;
 
 				.cart-screen-confirm-order-icon {
 					@include iconSize;
@@ -90,6 +147,17 @@
 					color: $fullBlack;
 					font-family: $medium;
 					vertical-align: middle;
+				}
+
+				&:hover {
+					opacity: 0.7;
+				}
+
+				&:active {
+					border: 5px double #00000080;
+					font-family: $bold;
+					opacity: 1;
+					scale: 0.9;
 				}
 			}
 		}

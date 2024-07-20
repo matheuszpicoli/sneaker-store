@@ -3,6 +3,10 @@ import React from "react"
 
 //- Next
 import Link from "next/link"
+import Image from "next/image"
+
+//- API
+import * as sneakerImage from "@/api/images"
 
 //- Icons
 import * as Icon from "@/icons/icons"
@@ -31,9 +35,26 @@ export default function CartScreen(): React.JSX.Element {
 					<details open>
 						<summary>Meus itens</summary>
 						<ul className="cart-screen-items-list">
-							{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(index => (
+							{[1, 2, 3, 4, 5, 6].map(index => (
 								<li key={index}>
-									Tênis {index}
+									<Image
+										className="cart-screen-items-list-sneaker-image"
+										src={sneakerImage.summer1}
+										alt={`Tênis ${index}`}
+										width={150}
+										height={150}
+										priority={false}
+									/>
+									<span className="cart-screen-items-list-sneaker-description">
+										Tênis {index}
+									</span>
+									<button
+										className="cart-screen-items-list-remove-item-button"
+										type="button"
+										aria-label={`Remover "Tênis ${index}".`}
+									>
+										<Icon.Remove className="cart-screen-items-list-remove-item-icon" />
+									</button>
 								</li>
 							))}
 						</ul>
@@ -48,6 +69,7 @@ export default function CartScreen(): React.JSX.Element {
 					</button>
 				</section>
 			</div>
+
 		</section>
 	)
 }
