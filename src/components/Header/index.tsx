@@ -1,11 +1,13 @@
 //- React
 import React, { useState, useLayoutEffect } from "react"
 
+//- Next
+import Link from "next/link"
+
 //- Icons
 import * as Icon from "@/icons/icons"
 
 //- Components
-import CartScreen from "../CartScreen"
 import FilterSceen from "../FilterScreen"
 
 import Logo from "./Logo"
@@ -20,27 +22,23 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps): React.JSX.Element {
 	const [filterScreen, setFilterScreen] = useState<boolean>(false)
-	const [cartScreen, setCartScreen] = useState<boolean>(false)
 
 	useLayoutEffect(() => {
-		if (filterScreen || cartScreen) document.body.classList.add("no-events")
+		if (filterScreen) document.body.classList.add("no-events")
 		else document.body.classList.remove("no-events")
-	}, [filterScreen, cartScreen])
+	}, [filterScreen])
 
 	useLayoutEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent): void => {
 			const esc: string = "Escape"
 
-			if (event.key === esc) {
-				if (filterScreen) setFilterScreen(false)
-				else if (cartScreen) setCartScreen(false)
-			}
+			if (filterScreen && event.key === esc) setFilterScreen(false)
 		}
 
 		window.addEventListener("keydown", handleKeyDown)
 
 		return () => window.removeEventListener("keydown", handleKeyDown)
-	}, [filterScreen, cartScreen, setFilterScreen, setCartScreen])
+	}, [filterScreen, setFilterScreen])
 
 	return (
 		<header>
@@ -68,21 +66,13 @@ export default function Header(props: HeaderProps): React.JSX.Element {
 							</div>
 						</section>
 					)}
-					{cartScreen ? (
-						<section className="cart">
-							<div className="icon-area" onClick={(): void => setCartScreen(false)}>
+					<section className="cart">
+						<div className="icon-area">
+							<Link id="link-to-cart" href="/cart">
 								<Icon.Cart className="cart-icon" title="Carrinho" />
-							</div>
-
-							<CartScreen />
-						</section>
-					) : (
-						<section className="cart">
-							<div className="icon-area" onClick={(): void => setCartScreen(true)}>
-								<Icon.Cart className="cart-icon" title="Carrinho" />
-							</div>
-						</section>
-					)}
+							</Link>
+						</div>
+					</section>
 				</div>
 			</nav>
 		</header>

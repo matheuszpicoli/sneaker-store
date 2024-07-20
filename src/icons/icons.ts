@@ -1,9 +1,11 @@
 //- React icons
+export { BsCheck2Circle as Check } from "react-icons/bs"
 export { FaFacebook as Facebook } from "react-icons/fa"
 export { FaInstagram as Instagram } from "react-icons/fa"
 export { FaTruck as Truck } from "react-icons/fa"
 export { FaXTwitter as X } from "react-icons/fa6"
 export { FaYoutube as Youtube } from "react-icons/fa"
+export { IoMdArrowRoundBack as ArrowLeft } from "react-icons/io";
 export { MdOutlineClose as Close } from "react-icons/md"
 export { MdOutlineFilterAlt as Filter } from "react-icons/md"
 export { MdOutlineFilterAltOff as Unfilter } from "react-icons/md"

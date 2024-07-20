@@ -1,0 +1,129 @@
+.cart-screen {
+	@include animation(cart-screen-appear 350ms ease-in-out);
+	background-color: $white;
+	cursor: default;
+	inset: 0;
+	overflow: auto;
+	position: fixed;
+	width: auto;
+	z-index: -10;
+
+	.cart-screen-navigation {
+		margin: 2em 0 0 2em;
+
+		.cart-screen-navigation-button {
+			background-color: transparent;
+			border: none;
+
+			.cart-screen-navigation-button-icon {
+				@include iconSize;
+				margin-right: 1em;
+				vertical-align: middle;
+			}
+
+			.cart-screen-navigation-button-text {
+				font-size: 1.5em;
+				font-family: $medium;
+				vertical-align: middle;
+
+				.emphasis {
+					font-family: $extraBold;
+				}
+			}
+
+			&:active {
+				opacity: 0.7;
+			}
+
+			&:hover {
+				@include animation(bounce 980ms both);
+			}
+		}
+	}
+
+	.cart-screen-content {
+		margin: 2em;
+
+		.cart-screen-title {
+			font-size: 1.2em;
+			font-family: $medium;
+			letter-spacing: -0.5px;
+
+			.cart-screen-icon {
+				@include iconSize;
+				vertical-align: middle;
+			}
+		}
+
+		.cart-screen-divider {
+			margin: 1em 0;
+		}
+
+		.cart-screen-items {
+			.cart-screen-items-list {
+				list-style: none;
+
+				> li {
+					margin: 1em 0 0 3em;
+				}
+			}
+		}
+
+		.cart-screen-confirm-order {
+			bottom: 0;
+			position: fixed;
+			right: 0;
+
+			.cart-screen-confirm-order-button {
+				padding: 1em;
+				margin: 0.5em;
+				cursor: pointer;
+
+				.cart-screen-confirm-order-icon {
+					@include iconSize;
+					color: $orange;
+					margin-right: 0.5em;
+					vertical-align: middle;
+				}
+
+				.cart-screen-confirm-order-text {
+					color: $fullBlack;
+					font-family: $medium;
+					vertical-align: middle;
+				}
+			}
+		}
+	}
+}
+
+@include keyframes(cart-screen-appear) {
+	from {
+		@include transform(translateX(-100%));
+		opacity: 0;
+	}
+
+	to {
+		@include transform(translateX(0));
+		opacity: 1;
+	}
+}
+
+@include keyframes(bounce) {
+
+	0%,
+	20%,
+	50%,
+	80%,
+	100% {
+		@include transform(translateX(0));
+	}
+
+	40% {
+		@include transform(translateX(-30px));
+		opacity: 0.5;
+	}
+
+	60% {
+		@include transform(translateX(-15px));
+	}
+}
